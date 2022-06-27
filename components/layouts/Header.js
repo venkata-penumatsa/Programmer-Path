@@ -82,7 +82,7 @@ export default function WithSubnavigation() {
                 fontWeight="black"
                 fontSize="xl"
               >
-                Programmer Path
+                Programmer Pathq
               </Text>
             </HStack>
           </NextLink>
