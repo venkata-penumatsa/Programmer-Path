@@ -13,7 +13,7 @@ export async function getStaticProps() {
   const endpoint = process.env.STEPZEN_END_POINT;
 
   const headers = {
-    authorization: "apikey " + process.env.SETPZEN_API_KEY,
+    authorization: "apikey " + process.env.SETPZEN_ADMIN_KEY,
     "content-type": "application/json",
   };
 

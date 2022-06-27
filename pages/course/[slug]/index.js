@@ -16,7 +16,7 @@ export async function getStaticPaths() {
   const endpoint = process.env.STEPZEN_END_POINT;
 
   const headers = {
-    authorization: "apikey " + process.env.SETPZEN_API_KEY,
+    authorization: "apikey " + process.env.SETPZEN_ADMIN_KEY,
     "content-type": "application/json",
   };
 
@@ -54,7 +54,7 @@ export async function getStaticProps({ params }) {
   const endpoint = process.env.STEPZEN_END_POINT;
 
   const headers = {
-    authorization: "apikey " + process.env.SETPZEN_API_KEY,
+    authorization: "apikey " + process.env.SETPZEN_ADMIN_KEY,
     "content-type": "application/json",
   };
 
