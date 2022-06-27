@@ -66,7 +66,7 @@ const LessonsSection = ({ lessons }) => {
                   <chakra.span>
                     {/* {lesson.content.length}{" "}
                     {`Lesson${lesson.content.length > 1 ? "s" : ""}`} */}
-                    {lesson.total_lessons}
+                    {lesson.total_lessons} Lessons
                   </chakra.span>
                   <VerticalDivider
                     height="15px"

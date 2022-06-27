@@ -8,6 +8,13 @@ const config = {
 };
 
 // 3. extend the theme
-const theme = extendTheme({ config });
+const theme = extendTheme({
+  config,
+  fonts: {
+    body: "Poppins, sans-serif",
+    heading: "Barlow, serif",
+    mono: "Menlo, monospace",
+  },
+});
 
 export default theme;

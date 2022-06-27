@@ -86,7 +86,7 @@ const CourseCard = (props) => {
           <Text
             fontWeight="medium"
             fontSize="sm"
-            color={textColor}
+            // color={textColor}
             noOfLines={2}
           >
             {short_desc}
