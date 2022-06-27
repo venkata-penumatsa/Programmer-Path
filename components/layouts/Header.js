@@ -73,7 +73,7 @@ export default function WithSubnavigation() {
             passHref
           >
             <HStack>
-              <GiFlowerPot sx={{ height: "200" }} />
+              <GiFlowerPot size={25} />
               <Text
                 as={Link}
                 textAlign={useBreakpointValue({ base: "center", md: "left" })}
