@@ -18,6 +18,7 @@ import {
 import { BsFillPlayCircleFill } from "react-icons/bs";
 import VerticalDivider from "../shared/VerticalDivider";
 import NextLink from "next/link";
+import { convertMinsToHrsMins } from "../Util/Common";
 
 const LessonsSection = ({ lessons }) => {
   console.log("lessons", lessons);
@@ -51,8 +52,10 @@ const LessonsSection = ({ lessons }) => {
         borderStyle="solid"
         borderColor={useColorModeValue("gray.200", "gray.600")}
       >
-        {lessons.map((lesson, id) => (
-          <AccordionItem key={id}>
+        {/* Section Header */}
+
+        {lessons.map((lesson, index) => (
+          <AccordionItem key={index}>
             <h2>
               <AccordionButton>
                 <AccordionIcon />
@@ -66,7 +69,8 @@ const LessonsSection = ({ lessons }) => {
                   <chakra.span>
                     {/* {lesson.content.length}{" "}
                     {`Lesson${lesson.content.length > 1 ? "s" : ""}`} */}
-                    {lesson.total_lessons} Lessons
+                    {lesson.total_lessons}{" "}
+                    {`Lesson${lesson.total_lessons > 1 ? "s" : ""}`}
                   </chakra.span>
                   <VerticalDivider
                     height="15px"
@@ -76,6 +80,9 @@ const LessonsSection = ({ lessons }) => {
                 </Stack>
               </AccordionButton>
             </h2>
+
+            {/* Lessons */}
+
             <AccordionPanel pb={4}>
               <Stack direction="column" spacing={4}>
                 {lesson.ps_lessonsListUsingCat_id.map((content, index) => (
@@ -96,7 +103,7 @@ const LessonsSection = ({ lessons }) => {
                         {index + 1}) {content.title}
                       </chakra.h2>
                     </HStack>
-                    <HStack mt={{ base: 2, sm: 0 }}>
+                    <HStack mt={{ base: 2, sm: 0 }} spacing="1">
                       <Button colorScheme="teal" size="xs">
                         <NextLink
                           href={{
@@ -111,7 +118,20 @@ const LessonsSection = ({ lessons }) => {
                         </NextLink>
                       </Button>
                       <VerticalDivider height="15px" />
-                      <Text>5 min</Text>
+                      <Text>
+                        {content.video_length_in_minutes} min
+                        {/* {convertMinsToHrsMins(content.video_length_in_minutes)} */}
+                        {/* {content.video_length_in_minutes >= 60 ? (
+                          <>
+                            {" "}
+                            {convertMinsToHrsMins(
+                              content.video_length_in_minutes
+                            )}{" "}
+                          </>
+                        ) : (
+                          <> {content.video_length_in_minutes} min</>
+                        )} */}
+                      </Text>
                     </HStack>
                   </Flex>
                 ))}
