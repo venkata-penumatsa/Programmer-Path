@@ -20,7 +20,7 @@
 
 .cl-component {
   --clerk-background-color: #1a202c;
-  --clerk-box-shadow: -1 2px 8px rgba(0, 0, 0, 0.2);
+  /* --clerk-box-shadow: -1 2px 8px rgba(0, 0, 0, 0.2); */
 }
 
 .cl-component {
@@ -42,6 +42,10 @@ input#password {
 .cl-component.cl-user-button-popup {
   background-color: #151515;
   padding: 1rem 0;
+}
+
+.cl-component .cl-auth-form-message strong {
+  color: #ffffff !important;
 }
 
 /* .hXjh5Waxs3XN6zW5pfXs {

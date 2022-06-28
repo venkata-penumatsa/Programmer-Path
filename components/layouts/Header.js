@@ -176,7 +176,9 @@ export default function WithSubnavigation() {
                 </Button>
               </NextLink>
             </Stack>
-            <UserButton />
+            <Stack>
+              <UserButton userProfileUrl="/user" />
+            </Stack>
 
             {/* <ColorModeSwitcher /> */}
           </Stack>
