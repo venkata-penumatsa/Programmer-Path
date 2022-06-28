@@ -19,7 +19,7 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import ColorModeSwitcher from "./ColorModeSwitcher";
 import { GiFlowerPot } from "react-icons/gi";
 // Clerk
-import { SignedIn, SignedOut, UserButton, UserProfile } from "@clerk/nextjs";
+import { SignedIn, SignedOut, UserButton, ClerkLoading } from "@clerk/nextjs";
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
@@ -78,7 +78,8 @@ export default function WithSubnavigation() {
                 as={Link}
                 textAlign={useBreakpointValue({ base: "center", md: "left" })}
                 // fontFamily={"heading"}
-                color={useColorModeValue("gray.800", "white")}
+                // color={useColorModeValue("gray.800", "white")}
+                // color="#81E6D9"
                 fontWeight="black"
                 fontSize="xl"
               >
@@ -120,7 +121,7 @@ export default function WithSubnavigation() {
                   display={{ base: "none", md: "inline-flex" }}
                   fontSize={"sm"}
                   fontWeight={600}
-                  colorScheme="teal"
+                  // colorScheme="teal"
                   variant="outline"
                   as={Link}
                 >
@@ -139,13 +140,13 @@ export default function WithSubnavigation() {
                   fontSize={"sm"}
                   fontWeight={600}
                   as={Link}
-                  colorScheme="teal"
+                  // colorScheme="teal"
                 >
                   Sign Up
                 </Button>
               </NextLink>
             </Stack>
-            <ColorModeSwitcher />
+            {/* <ColorModeSwitcher /> */}
           </Stack>
         </SignedOut>
 
@@ -177,7 +178,7 @@ export default function WithSubnavigation() {
             </Stack>
             <UserButton />
 
-            <ColorModeSwitcher />
+            {/* <ColorModeSwitcher /> */}
           </Stack>
         </SignedIn>
       </Flex>

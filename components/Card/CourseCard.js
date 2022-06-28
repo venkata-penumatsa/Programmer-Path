@@ -83,19 +83,14 @@ const CourseCard = (props) => {
           alignItems="center"
           height="2.6rem"
         >
-          <Text
-            fontWeight="black"
-            fontSize="sm"
-            // color={textColor}
-            noOfLines={2}
-          >
+          <Text fontWeight="bold" fontSize="sm" color={textColor} noOfLines={2}>
             {short_desc}
           </Text>
         </Stack>
         <Stack spacing="2" direction="row" alignItems="center">
           <Avatar src={trainer_avatar} size="xs" />
 
-          <Text fontWeight="medium" color={textColor}>
+          <Text fontWeight="medium" fontSize="sm" color={textColor}>
             {trainer_name}
           </Text>
         </Stack>
@@ -107,7 +102,7 @@ const CourseCard = (props) => {
         >
           <HStack>
             <Icon as={FaStar} color="yellow.400" />
-            <Text fontSize="xs" color={textColor}>
+            <Text fontSize="sm" color={textColor}>
               {rating} ({total_reviews} reviews)
             </Text>
           </HStack>
@@ -115,7 +110,7 @@ const CourseCard = (props) => {
             height="15px"
             display={{ base: "none", sm: "block" }}
           />
-          <Text fontSize="xs" color={textColor}>
+          <Text fontSize="sm" color={textColor}>
             100 Enrollments
           </Text>
         </Stack>

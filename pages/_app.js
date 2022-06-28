@@ -14,6 +14,15 @@ import {
 import "../clerk.css";
 // -----------------------------------------------------------
 
+const customThemeOptions = {
+  // general: {
+  //   /* Padding mod for selected Clerk elements */
+  //   padding: "20em",
+  //   /* Border radius for selected Clerk elements */
+  //   borderRadius: "10px",
+  // },
+};
+
 const publicPages = [
   "/",
   "/course/[slug]",
@@ -28,7 +37,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
       <ProgressBar />
-      <ClerkProvider {...pageProps}>
+      <ClerkProvider {...pageProps} theme={customThemeOptions}>
         <Header />
         {isPublicPage ? (
           <Component {...pageProps} />

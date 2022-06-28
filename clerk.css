@@ -1,5 +1,9 @@
 .cl-component.cl-sign-in {
-  padding: 10px !important;
+  padding: 1px !important;
+}
+
+.cl-component.cl-sign-up {
+  padding: 1px !important;
 }
 
 .cl-component .cl-logo {
@@ -19,14 +23,34 @@
   --clerk-box-shadow: -1 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-.hXjh5Waxs3XN6zW5pfXs {
-  color: #b52424;
-  background-color: #151515;
+.cl-component {
+  margin-bottom: 0em;
 }
 
 input#text-field-identifier {
   background-color: #1a202c;
 }
+
+input#emailAddress {
+  background-color: #1a202c;
+}
+
+input#password {
+  background-color: #1a202c;
+}
+
+.cl-component.cl-user-button-popup {
+  background-color: #151515;
+  padding: 1rem 0;
+}
+
+/* .hXjh5Waxs3XN6zW5pfXs {
+  background-color: none;
+} */
+
+/* .hXjh5Waxs3XN6zW5pfXs {
+  background-color: #1a202c;
+} */
 
 /* .cl-component.cl-sign-in,
 .cl-component.cl-sign-up {

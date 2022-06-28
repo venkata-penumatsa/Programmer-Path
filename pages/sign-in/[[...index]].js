@@ -1,4 +1,4 @@
-import { SignIn } from "@clerk/nextjs";
+import { SignIn, ClerkLoading } from "@clerk/nextjs";
 import { Center, Text, VStack } from "@chakra-ui/react";
 
 const SignInPage = () => {
@@ -6,6 +6,7 @@ const SignInPage = () => {
     <div>
       <br />
       <br />
+
       <Center>
         <VStack>
           <Text fontWeight="black" fontSize="xl">
