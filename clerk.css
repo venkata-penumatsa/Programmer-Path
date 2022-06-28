@@ -15,9 +15,23 @@
 }
 
 .cl-component {
-  --clerk-background-color: none;
+  --clerk-background-color: #1a202c;
   --clerk-box-shadow: -1 2px 8px rgba(0, 0, 0, 0.2);
 }
+
+.hXjh5Waxs3XN6zW5pfXs {
+  color: #b52424;
+  background-color: #151515;
+}
+
+input#text-field-identifier {
+  background-color: #1a202c;
+}
+
+/* .cl-component.cl-sign-in,
+.cl-component.cl-sign-up {
+  padding: 0rem 0rem;
+} */
 
 /* span.I5LAUiZ_1LvjHChTQkwt.cl-label {
   display: "none";

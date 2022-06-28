@@ -12,14 +12,14 @@ import {
   useDisclosure,
   useColorModeValue,
   useBreakpointValue,
+  Avatar,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import ColorModeSwitcher from "./ColorModeSwitcher";
-import { FaBeer } from "react-icons/fa";
 import { GiFlowerPot } from "react-icons/gi";
-import { MdWaves } from "react-icons/md";
-import { TiChevronLeft, TiChevronRight } from "react-icons/ti";
+// Clerk
+import { SignedIn, SignedOut, UserButton, UserProfile } from "@clerk/nextjs";
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
@@ -101,36 +101,85 @@ export default function WithSubnavigation() {
         /> */}
 
         {/* Buttons */}
-        <Stack direction="row" spacing={2}>
-          <Stack
-            flex={{ base: 1, md: 0 }}
-            justify={"flex-end"}
-            direction={"row"}
-            spacing={3}
-          >
-            <Button
-              display={{ base: "none", md: "inline-flex" }}
-              fontSize={"sm"}
-              fontWeight={600}
-              href={"#"}
-              colorScheme="teal"
-              variant="outline"
+
+        <SignedOut>
+          <Stack direction="row" spacing={2}>
+            <Stack
+              flex={{ base: 1, md: 0 }}
+              justify={"flex-end"}
+              direction={"row"}
+              spacing={3}
             >
-              Sign In
-            </Button>
-            <Button
-              display={{ base: "none", md: "inline-flex" }}
-              fontSize={"sm"}
-              fontWeight={600}
-              href={"#"}
-              colorScheme="teal"
-            >
-              Sign Up
-            </Button>
+              <NextLink
+                href={{
+                  pathname: "/sign-in",
+                }}
+                passHref
+              >
+                <Button
+                  display={{ base: "none", md: "inline-flex" }}
+                  fontSize={"sm"}
+                  fontWeight={600}
+                  colorScheme="teal"
+                  variant="outline"
+                  as={Link}
+                >
+                  Sign In
+                </Button>
+              </NextLink>
+
+              <NextLink
+                href={{
+                  pathname: "/sign-up",
+                }}
+                passHref
+              >
+                <Button
+                  display={{ base: "none", md: "inline-flex" }}
+                  fontSize={"sm"}
+                  fontWeight={600}
+                  as={Link}
+                  colorScheme="teal"
+                >
+                  Sign Up
+                </Button>
+              </NextLink>
+            </Stack>
+            <ColorModeSwitcher />
           </Stack>
-          {/* Color Mode Switcher */}
-          <ColorModeSwitcher />
-        </Stack>
+        </SignedOut>
+
+        <SignedIn>
+          <Stack direction="row" spacing={2}>
+            <Stack
+              flex={{ base: 1, md: 0 }}
+              justify={"flex-end"}
+              direction={"row"}
+              spacing={3}
+            >
+              <NextLink
+                href={{
+                  pathname: "/my-enrollments",
+                }}
+                passHref
+              >
+                <Button
+                  display={{ base: "none", md: "inline-flex" }}
+                  fontSize={"sm"}
+                  fontWeight={600}
+                  colorScheme="teal"
+                  variant="outline"
+                  as={Link}
+                >
+                  My Enrollments
+                </Button>
+              </NextLink>
+            </Stack>
+            <UserButton />
+
+            <ColorModeSwitcher />
+          </Stack>
+        </SignedIn>
       </Flex>
 
       {/* Mobile Nav */}
@@ -143,30 +192,79 @@ export default function WithSubnavigation() {
 
 const MobileNav = () => {
   return (
-    <Stack
-      bg={useColorModeValue("white", "gray.800")}
-      p={4}
-      display={{ md: "none" }}
-    >
-      <Button
-        fontSize={"sm"}
-        fontWeight={600}
-        href={"#"}
-        w="100%"
-        colorScheme="teal"
-        variant="outline"
-      >
-        Sign In
-      </Button>
-      <Button
-        fontSize={"sm"}
-        fontWeight={600}
-        href={"#"}
-        colorScheme="teal"
-        w="100%"
-      >
-        Sign Up
-      </Button>
-    </Stack>
+    <>
+      <SignedOut>
+        <Stack
+          bg={useColorModeValue("white", "gray.800")}
+          p={4}
+          display={{ md: "none" }}
+        >
+          <NextLink
+            href={{
+              pathname: "/sign-in",
+            }}
+            passHref
+          >
+            <Button
+              fontSize={"sm"}
+              fontWeight={600}
+              as={Link}
+              w="100%"
+              colorScheme="teal"
+              variant="outline"
+            >
+              Sign In
+            </Button>
+          </NextLink>
+
+          <NextLink
+            href={{
+              pathname: "/sign-up",
+            }}
+            passHref
+          >
+            <Button
+              fontSize={"sm"}
+              fontWeight={600}
+              as={Link}
+              colorScheme="teal"
+              w="100%"
+            >
+              Sign Up
+            </Button>
+          </NextLink>
+        </Stack>
+      </SignedOut>
+
+      <SignedIn>
+        <Stack
+          bg={useColorModeValue("white", "gray.800")}
+          p={4}
+          display={{ md: "none" }}
+          spacing={3}
+        >
+          <Stack direction="row" spacing={2}>
+            <NextLink
+              href={{
+                pathname: "/my-enrollments",
+              }}
+              passHref
+            >
+              <Button
+                display={{ base: "none", md: "inline-flex" }}
+                fontSize={"sm"}
+                fontWeight={600}
+                colorScheme="teal"
+                variant="outline"
+                as={Link}
+              >
+                My Enrollments
+              </Button>
+            </NextLink>
+            {/* <UserButton /> */}
+          </Stack>
+        </Stack>
+      </SignedIn>
+    </>
   );
 };

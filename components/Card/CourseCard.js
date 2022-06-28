@@ -43,7 +43,7 @@ const CourseCard = (props) => {
 
   return (
     <Stack
-      spacing={3}
+      spacing={2}
       {...rootProps}
       w={{ base: "auto", md: "17rem" }}
       h={{ base: "auto", md: "21.5rem" }}
@@ -84,7 +84,7 @@ const CourseCard = (props) => {
           height="2.6rem"
         >
           <Text
-            fontWeight="medium"
+            fontWeight="black"
             fontSize="sm"
             // color={textColor}
             noOfLines={2}
@@ -107,7 +107,7 @@ const CourseCard = (props) => {
         >
           <HStack>
             <Icon as={FaStar} color="yellow.400" />
-            <Text fontSize="sm" color={textColor}>
+            <Text fontSize="xs" color={textColor}>
               {rating} ({total_reviews} reviews)
             </Text>
           </HStack>
@@ -115,7 +115,7 @@ const CourseCard = (props) => {
             height="15px"
             display={{ base: "none", sm: "block" }}
           />
-          <Text fontSize="sm" color={textColor}>
+          <Text fontSize="xs" color={textColor}>
             100 Enrollments
           </Text>
         </Stack>
