@@ -1,4 +1,4 @@
-import { SignIn, ClerkLoading } from "@clerk/nextjs";
+import { SignIn } from "@clerk/nextjs";
 import { Center, Text, VStack } from "@chakra-ui/react";
 
 const SignInPage = () => {

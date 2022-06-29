@@ -52,6 +52,11 @@ input#password {
   background-color: #1a202c !important;
 }
 
+.cl-component.cl-user-button-popup {
+  background-color: #52617e !important;
+  padding: 1rem 0 !important;
+}
+
 /* .hXjh5Waxs3XN6zW5pfXs {
   background-color: none;
 } */
