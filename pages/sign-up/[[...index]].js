@@ -15,7 +15,7 @@ const SignUpPage = () => {
               Sign Up
             </Text>
             <Text fontWeight="black" fontSize="sm">
-              You`&apos;`ve arrived to the Programmer Path. A world of knowledge
+              You&apos;ve arrived to the Programmer Path. A world of knowledge
             </Text>
           </VStack>
         </Center>

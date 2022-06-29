@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import {
   chakra,
   Text,
@@ -25,14 +25,16 @@ import VerticalDivider from "../shared/VerticalDivider";
 import { convertMinsToHrsMins } from "../Util/Common";
 
 // Clerk
-import { SignedIn, SignedOut, useUser } from "@clerk/nextjs";
+import { SignedIn, SignedOut, ClerkLoading } from "@clerk/nextjs";
 import { redirect } from "next/dist/server/api-utils";
 
-// Next JS
-import { useRouter } from "next/router";
-import NextLink from "next/link";
+// Custom Components
+import User_Sign_Out from "../Enroll/User_Sign_Out";
+import User_Sign_In from "../Enroll/User_Sign_In";
+import User_Loading from "../Enroll/User_Loading";
 
 const HeroSection = ({
+  slug,
   short_desc,
   long_desc,
   trainer_name,
@@ -50,14 +52,61 @@ const HeroSection = ({
   const { isOpen, onOpen, onClose } = useDisclosure();
   const textColor = useColorModeValue("gray.600", "gray.400");
 
-  const { isLoaded, isSignedIn, user } = useUser();
+  // const { isLoaded, isSignedIn, user } = useUser();
 
-  // const router = useRouter();
+  // const [enrolled, setEnrolled] = useState(null);
 
-  // const redirect_to_logn = () => {
-  //   router.push({
-  //     pathname: "/sign-in",
+  // useEffect(() => {
+  //   const check_enrollment = async () => {
+  //     const response = await fetch("/api/check_enrollment", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         slug: slug,
+  //       }),
+  //     });
+
+  //     if (response.ok) {
+  //       const client_response = await response.json();
+  //       console.log("check enrollment data", client_response);
+  //       const enrollment_id =
+  //         client_response.data.getPs_course_enrollmentsUsingSlugAndUser[0].id;
+  //       console.log("enrollment id", enrollment_id);
+
+  //       if (enrollment_id) {
+  //         setEnrolled(enrollment_id);
+  //       }
+  //     }
+  //   };
+
+  //   check_enrollment();
+  // }, []);
+
+  // const enroll = async () => {
+  //   console.log("inside enroll function ");
+
+  //   const response = await fetch("/api/enroll", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       slug: slug,
+  //     }),
   //   });
+
+  //   if (!response.ok) {
+  //     console.log("error", error.message);
+  //   }
+
+  //   if (response.ok) {
+  //     const response_formatted = await response.json();
+  //     // console.log(response_formatted);
+  //     const id = response_formatted.data.insertPs_course_enrollments.id;
+  //     // console.log("id", id);
+  //   }
   // };
 
   return (
@@ -117,6 +166,7 @@ const HeroSection = ({
         </Stack>
 
         {/* Right Panel */}
+
         <Stack spacing={2} w={{ base: "100%", md: "40%" }}>
           <Box
             position="relative"
@@ -171,94 +221,19 @@ const HeroSection = ({
             </Text>
           </Box>
 
-          {/* Signed In */}
+          <ClerkLoading>
+            <User_Loading />
+          </ClerkLoading>
 
-          {isLoaded &&
-            (isSignedIn ? (
-              <>
-                {" "}
-                <Text
-                  fontWeight="medium"
-                  fontSize="sm"
-                  color={textColor}
-                  noOfLines={2}
-                  textAlign="center"
-                >
-                  Hi {user.fullName} You are not yet enrolled into the course.
-                  Click below to enroll into the course{" "}
-                </Text>
-                <Button
-                  w={{ base: "100%", sm: "auto" }}
-                  h={12}
-                  px={6}
-                  size="lg"
-                  rounded="xs"
-                  mb={{ base: 2, sm: 0 }}
-                  zIndex={5}
-                  lineHeight={1}
-                  colorScheme="teal"
-                  onClick={onOpen}
-                >
-                  {is_free ? (
-                    <div> Enroll Now (Free) </div>
-                  ) : (
-                    <div> Enroll Now (Premium) </div>
-                  )}
-                </Button>
-              </>
-            ) : (
-              "Loading..."
-            ))}
+          <SignedOut>
+            <User_Sign_Out is_free={is_free} />
+          </SignedOut>
 
-          {/* Signed Out */}
-
-          {!isSignedIn && (
-            <>
-              {" "}
-              <Text
-                fontWeight="medium"
-                fontSize="sm"
-                color={textColor}
-                noOfLines={2}
-                textAlign="center"
-              >
-                Hi, Sign In to Enroll into the course
-              </Text>
-              <NextLink
-                href={{
-                  pathname: "/sign-in",
-                }}
-                passHref
-              >
-                <Button
-                  w={{ base: "100%", sm: "auto" }}
-                  h={12}
-                  px={6}
-                  size="lg"
-                  rounded="xs"
-                  mb={{ base: 2, sm: 0 }}
-                  zIndex={5}
-                  lineHeight={1}
-                  colorScheme="teal"
-                  as={Link}
-                  // onClick={redirect_to_logn}
-                >
-                  {is_free ? (
-                    <div> Enroll Now (Free) </div>
-                  ) : (
-                    <div> Enroll Now (Premium) </div>
-                  )}
-                </Button>
-              </NextLink>
-            </>
-          )}
-
-          {/* SignIn Logic  */}
+          <SignedIn>
+            <User_Sign_In is_free={is_free} />
+          </SignedIn>
         </Stack>
       </Stack>
-      {/* {isOpen && (
-        <FormModal isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
-      )} */}
     </Fragment>
   );
 };

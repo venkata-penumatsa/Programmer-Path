@@ -23,6 +23,7 @@ const Main = ({ data }) => {
   console.log("single page data", data);
 
   const {
+    slug,
     short_desc,
     long_desc,
     trainer_name,
@@ -43,6 +44,7 @@ const Main = ({ data }) => {
     <Box>
       <BreadcrumbSection />
       <HeroSection
+        slug={slug}
         short_desc={short_desc}
         long_desc={long_desc}
         trainer_name={trainer_name}
