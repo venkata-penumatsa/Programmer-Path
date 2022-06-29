@@ -14,6 +14,7 @@ import {
   IconButton,
   useDisclosure,
   useColorModeValue,
+  Link,
 } from "@chakra-ui/react";
 import Badge from "../shared/Badge";
 import { BsClock, BsBarChartLine } from "react-icons/bs";
@@ -22,8 +23,14 @@ import { FaPlay, FaStar } from "react-icons/fa";
 import FormModal from "./FormModal";
 import VerticalDivider from "../shared/VerticalDivider";
 import { convertMinsToHrsMins } from "../Util/Common";
+
 // Clerk
 import { SignedIn, SignedOut, useUser } from "@clerk/nextjs";
+import { redirect } from "next/dist/server/api-utils";
+
+// Next JS
+import { useRouter } from "next/router";
+import NextLink from "next/link";
 
 const HeroSection = ({
   short_desc,
@@ -43,11 +50,16 @@ const HeroSection = ({
   const { isOpen, onOpen, onClose } = useDisclosure();
   const textColor = useColorModeValue("gray.600", "gray.400");
 
-  const previewlesson = () => {
-    alert("hello");
-  };
+  const { isLoaded, isSignedIn, user } = useUser();
 
-  const { user } = useUser();
+  // const router = useRouter();
+
+  // const redirect_to_logn = () => {
+  //   router.push({
+  //     pathname: "/sign-in",
+  //   });
+  // };
+
   return (
     <Fragment>
       <Stack
@@ -136,7 +148,7 @@ const HeroSection = ({
               top="50%"
               _hover={{ shadow: "md" }}
               transform="translateX(-50%) translateY(-50%)"
-              onClick={previewlesson}
+              // onClick={previewlesson}
             />
             <Image
               alt="Hero Image"
@@ -159,77 +171,94 @@ const HeroSection = ({
             </Text>
           </Box>
 
-          {/* SignOut Logic  */}
+          {/* Signed In */}
 
-          <SignedOut>
-            <Text
-              fontWeight="medium"
-              fontSize="sm"
-              color={textColor}
-              noOfLines={2}
-              textAlign="center"
-            >
-              Hi, test you are enrolled on 29-May-2022 this will expire on
-              28-Jun-2022 click below to resume learning.
-            </Text>
-            <Button
-              w={{ base: "100%", sm: "auto" }}
-              h={12}
-              px={6}
-              size="lg"
-              rounded="xs"
-              mb={{ base: 2, sm: 0 }}
-              zIndex={5}
-              lineHeight={1}
-              colorScheme="teal"
-              onClick={onOpen}
-            >
-              {is_free ? (
-                <div> Enroll Now (Free) </div>
-              ) : (
-                <div> Enroll Now (Premium) </div>
-              )}
-            </Button>
-          </SignedOut>
+          {isLoaded &&
+            (isSignedIn ? (
+              <>
+                {" "}
+                <Text
+                  fontWeight="medium"
+                  fontSize="sm"
+                  color={textColor}
+                  noOfLines={2}
+                  textAlign="center"
+                >
+                  Hi {user.fullName} You are not yet enrolled into the course.
+                  Click below to enroll into the course{" "}
+                </Text>
+                <Button
+                  w={{ base: "100%", sm: "auto" }}
+                  h={12}
+                  px={6}
+                  size="lg"
+                  rounded="xs"
+                  mb={{ base: 2, sm: 0 }}
+                  zIndex={5}
+                  lineHeight={1}
+                  colorScheme="teal"
+                  onClick={onOpen}
+                >
+                  {is_free ? (
+                    <div> Enroll Now (Free) </div>
+                  ) : (
+                    <div> Enroll Now (Premium) </div>
+                  )}
+                </Button>
+              </>
+            ) : (
+              "Loading..."
+            ))}
+
+          {/* Signed Out */}
+
+          {!isSignedIn && (
+            <>
+              {" "}
+              <Text
+                fontWeight="medium"
+                fontSize="sm"
+                color={textColor}
+                noOfLines={2}
+                textAlign="center"
+              >
+                Hi, Sign In to Enroll into the course
+              </Text>
+              <NextLink
+                href={{
+                  pathname: "/sign-in",
+                }}
+                passHref
+              >
+                <Button
+                  w={{ base: "100%", sm: "auto" }}
+                  h={12}
+                  px={6}
+                  size="lg"
+                  rounded="xs"
+                  mb={{ base: 2, sm: 0 }}
+                  zIndex={5}
+                  lineHeight={1}
+                  colorScheme="teal"
+                  as={Link}
+                  // onClick={redirect_to_logn}
+                >
+                  {is_free ? (
+                    <div> Enroll Now (Free) </div>
+                  ) : (
+                    <div> Enroll Now (Premium) </div>
+                  )}
+                </Button>
+              </NextLink>
+            </>
+          )}
 
           {/* SignIn Logic  */}
-
-          <SignedIn>
-            <Text
-              fontWeight="medium"
-              fontSize="sm"
-              color={textColor}
-              noOfLines={3}
-              textAlign="center"
-            >
-              Hi {user.fullName} Click below to Enroll into the course and
-              enroll forever like any thing howeevr whatenjnskwnkjdebqndekm
-              dwjednwedkwmskmqwkndiwhu
-            </Text>
-            <Button
-              w={{ base: "100%", sm: "auto" }}
-              h={12}
-              px={6}
-              size="lg"
-              rounded="xs"
-              mb={{ base: 2, sm: 0 }}
-              zIndex={5}
-              lineHeight={1}
-              colorScheme="teal"
-              onClick={onOpen}
-            >
-              {is_free ? (
-                <div> Enroll Now (Free) </div>
-              ) : (
-                <div> Enroll Now (Premium) </div>
-              )}
-            </Button>
-          </SignedIn>
         </Stack>
       </Stack>
-      {isOpen && (
+      {/* {isOpen && (
         <FormModal isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
-      )}
+      )} */}
     </Fragment>
   );
 };

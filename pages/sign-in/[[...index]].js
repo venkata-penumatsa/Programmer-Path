@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 
 const SignInPage = () => {
   const router = useRouter();
-  // console.log("current route", router.asPath);
+  console.log("current route", router);
   return (
     <div>
       <br />
