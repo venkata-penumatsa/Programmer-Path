@@ -20,7 +20,7 @@
 
 .cl-component {
   --clerk-background-color: #1a202c;
-  /* --clerk-box-shadow: -1 2px 8px rgba(0, 0, 0, 0.2); */
+  --clerk-box-shadow: -1 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .cl-component {

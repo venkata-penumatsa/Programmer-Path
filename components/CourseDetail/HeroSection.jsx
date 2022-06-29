@@ -22,6 +22,8 @@ import { FaPlay, FaStar } from "react-icons/fa";
 import FormModal from "./FormModal";
 import VerticalDivider from "../shared/VerticalDivider";
 import { convertMinsToHrsMins } from "../Util/Common";
+// Clerk
+import { SignedIn, SignedOut, useUser } from "@clerk/nextjs";
 
 const HeroSection = ({
   short_desc,
@@ -45,6 +47,7 @@ const HeroSection = ({
     alert("hello");
   };
 
+  const { user } = useUser();
   return (
     <Fragment>
       <Stack
@@ -156,34 +159,72 @@ const HeroSection = ({
             </Text>
           </Box>
 
-          <Text
-            fontWeight="medium"
-            fontSize="sm"
-            color={textColor}
-            noOfLines={2}
-            textAlign="center"
-          >
-            Hi, test you are enrolled on 29-May-2022 this will expire on
-            28-Jun-2022 click below to resume learning.
-          </Text>
-          <Button
-            w={{ base: "100%", sm: "auto" }}
-            h={12}
-            px={6}
-            size="lg"
-            rounded="xs"
-            mb={{ base: 2, sm: 0 }}
-            zIndex={5}
-            lineHeight={1}
-            colorScheme="teal"
-            onClick={onOpen}
-          >
-            {is_free ? (
-              <div> Enroll Now (Free) </div>
-            ) : (
-              <div> Enroll Now (Premium) </div>
-            )}
-          </Button>
+          {/* SignOut Logic  */}
+
+          <SignedOut>
+            <Text
+              fontWeight="medium"
+              fontSize="sm"
+              color={textColor}
+              noOfLines={2}
+              textAlign="center"
+            >
+              Hi, test you are enrolled on 29-May-2022 this will expire on
+              28-Jun-2022 click below to resume learning.
+            </Text>
+            <Button
+              w={{ base: "100%", sm: "auto" }}
+              h={12}
+              px={6}
+              size="lg"
+              rounded="xs"
+              mb={{ base: 2, sm: 0 }}
+              zIndex={5}
+              lineHeight={1}
+              colorScheme="teal"
+              onClick={onOpen}
+            >
+              {is_free ? (
+                <div> Enroll Now (Free) </div>
+              ) : (
+                <div> Enroll Now (Premium) </div>
+              )}
+            </Button>
+          </SignedOut>
+
+          {/* SignIn Logic  */}
+
+          <SignedIn>
+            <Text
+              fontWeight="medium"
+              fontSize="sm"
+              color={textColor}
+              noOfLines={3}
+              textAlign="center"
+            >
+              Hi {user.fullName} Click below to Enroll into the course and
+              enroll forever like any thing howeevr whatenjnskwnkjdebqndekm
+              dwjednwedkwmskmqwkndiwhu
+            </Text>
+            <Button
+              w={{ base: "100%", sm: "auto" }}
+              h={12}
+              px={6}
+              size="lg"
+              rounded="xs"
+              mb={{ base: 2, sm: 0 }}
+              zIndex={5}
+              lineHeight={1}
+              colorScheme="teal"
+              onClick={onOpen}
+            >
+              {is_free ? (
+                <div> Enroll Now (Free) </div>
+              ) : (
+                <div> Enroll Now (Premium) </div>
+              )}
+            </Button>
+          </SignedIn>
         </Stack>
       </Stack>
       {isOpen && (

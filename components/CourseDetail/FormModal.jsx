@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   Button,
   Modal,
@@ -10,12 +10,16 @@ import {
   FormControl,
   FormLabel,
   Input,
+  VStack,
+  Center,
+  Text,
   ModalFooter,
-} from '@chakra-ui/react'
+} from "@chakra-ui/react";
+import { SignIn } from "@clerk/nextjs";
 
 const FormModal = ({ isOpen, onOpen, onClose }) => {
-  const initialRef = React.useRef(null)
-  const finalRef = React.useRef(null)
+  const initialRef = React.useRef(null);
+  const finalRef = React.useRef(null);
 
   return (
     <Modal
@@ -29,16 +33,13 @@ const FormModal = ({ isOpen, onOpen, onClose }) => {
       <ModalContent>
         <ModalHeader>Create your account</ModalHeader>
         <ModalCloseButton />
-        <ModalBody pb={6}>
-          <FormControl>
-            <FormLabel>First name</FormLabel>
-            <Input ref={initialRef} placeholder="First name" />
-          </FormControl>
+        <ModalBody pb={20}>
+          <div>
+            <br />
+            <br />
 
-          <FormControl mt={4}>
-            <FormLabel>Last name</FormLabel>
-            <Input placeholder="Last name" />
-          </FormControl>
+            <SignIn path="/sign-in" routing="path" signUpUrl="/sign-up" />
+          </div>
         </ModalBody>
 
         <ModalFooter>
@@ -49,7 +50,7 @@ const FormModal = ({ isOpen, onOpen, onClose }) => {
         </ModalFooter>
       </ModalContent>
     </Modal>
-  )
-}
+  );
+};
 
-export default FormModal
+export default FormModal;
