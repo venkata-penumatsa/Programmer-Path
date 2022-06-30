@@ -8,11 +8,13 @@ import { useUser } from "@clerk/nextjs";
 import User_Enrolled_Yes from "./User_Enrolled_Yes";
 import User_Enrolled_No from "./User_Enrolled_No";
 import ErrorAlert from "../Util/ErrorAlert";
+import User_Loading from "./User_Loading";
 
 const User_Sign_In = ({ is_free, slug }) => {
   const textColor = useColorModeValue("gray.600", "gray.400");
 
   const { user } = useUser();
+  const [isLoading, setLoading] = useState(true);
   const [enrolled, setEnrolled] = useState();
   const [enrolled_error, setEnrolledError] = useState();
   const [rerender, setRerender] = useState(false);
@@ -35,6 +37,7 @@ const User_Sign_In = ({ is_free, slug }) => {
           setEnrolled(
             data.data.getPs_course_enrollmentsUsingSlugAndUser.length
           );
+          setLoading(false);
         }
       })
       .catch((err) => setEnrolledError(err.message));
@@ -44,6 +47,8 @@ const User_Sign_In = ({ is_free, slug }) => {
 
   return (
     <>
+      {isLoading ? <User_Loading /> : ""}
+
       {enrolled === 0 && (
         <User_Enrolled_No
           user_fullname={user.fullName}
