@@ -1,5 +1,4 @@
 import { withAuth } from "@clerk/nextjs/api";
-import { GraphQLClient, gql } from "graphql-request";
 const { uuid } = require("uuidv4");
 import format from "date-fns/format";
 import add from "date-fns/add";

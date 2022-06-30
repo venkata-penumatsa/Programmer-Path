@@ -26,6 +26,7 @@ export default withAuth(async (req, res) => {
             getPs_course_enrollmentsUsingSlugAndUser(slug: $slug, user_id: $user_id) {
               id
               enrollment_start_date
+  
             }
           } `,
           variables: {
@@ -44,7 +45,8 @@ export default withAuth(async (req, res) => {
         const data = await response.json();
         const data2 = data.data;
         console.log("server data", data2);
-        return res.status(200).json({ data: data2 });
+
+        return res.status(200).json({ message: "success", data: data2 });
 
         // const data = await graphQLClient.request(query, variables);
         // // console.log(JSON.stringify(data, undefined, 2));

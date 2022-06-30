@@ -13,47 +13,31 @@ const User_Sign_In = ({ is_free, slug }) => {
   const textColor = useColorModeValue("gray.600", "gray.400");
 
   const { user } = useUser();
-  const [enrolled, setEnrolled] = useState(null);
-  const [enrolled_error, setEnrolledError] = useState(null);
+  const [enrolled, setEnrolled] = useState();
+  const [enrolled_error, setEnrolledError] = useState();
   const [rerender, setRerender] = useState(false);
 
   console.log("render", rerender);
 
   useEffect(() => {
-    let ignore = false;
-
-    const check_enrollment = async () => {
-      const response = await fetch("/api/check_enrollment", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          slug: slug,
-        }),
-      });
-
-      if (!response.ok) {
-        console.log("check enrollment error", response);
-        setEnrolledError("Network error");
-      }
-
-      if (response.ok) {
-        console.log("raw response", response);
-        const client_response = await response.json();
-        console.log("client response", client_response);
-
-        if (client_response.data) {
+    fetch("/api/check_enrollment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        slug: slug,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.data) {
           setEnrolled(
-            client_response.data.getPs_course_enrollmentsUsingSlugAndUser.length
+            data.data.getPs_course_enrollmentsUsingSlugAndUser.length
           );
-        } else {
-          setEnrolledError("there is an error in getting data");
         }
-      }
-    };
-
-    check_enrollment();
+      })
+      .catch((err) => setEnrolledError(err.message));
   }, [rerender]);
 
   console.log("enrolled", enrolled);
