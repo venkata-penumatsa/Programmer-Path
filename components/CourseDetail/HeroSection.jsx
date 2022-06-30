@@ -52,63 +52,6 @@ const HeroSection = ({
   const { isOpen, onOpen, onClose } = useDisclosure();
   const textColor = useColorModeValue("gray.600", "gray.400");
 
-  // const { isLoaded, isSignedIn, user } = useUser();
-
-  // const [enrolled, setEnrolled] = useState(null);
-
-  // useEffect(() => {
-  //   const check_enrollment = async () => {
-  //     const response = await fetch("/api/check_enrollment", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         slug: slug,
-  //       }),
-  //     });
-
-  //     if (response.ok) {
-  //       const client_response = await response.json();
-  //       console.log("check enrollment data", client_response);
-  //       const enrollment_id =
-  //         client_response.data.getPs_course_enrollmentsUsingSlugAndUser[0].id;
-  //       console.log("enrollment id", enrollment_id);
-
-  //       if (enrollment_id) {
-  //         setEnrolled(enrollment_id);
-  //       }
-  //     }
-  //   };
-
-  //   check_enrollment();
-  // }, []);
-
-  // const enroll = async () => {
-  //   console.log("inside enroll function ");
-
-  //   const response = await fetch("/api/enroll", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       slug: slug,
-  //     }),
-  //   });
-
-  //   if (!response.ok) {
-  //     console.log("error", error.message);
-  //   }
-
-  //   if (response.ok) {
-  //     const response_formatted = await response.json();
-  //     // console.log(response_formatted);
-  //     const id = response_formatted.data.insertPs_course_enrollments.id;
-  //     // console.log("id", id);
-  //   }
-  // };
-
   return (
     <Fragment>
       <Stack
@@ -230,7 +173,7 @@ const HeroSection = ({
           </SignedOut>
 
           <SignedIn>
-            <User_Sign_In is_free={is_free} />
+            <User_Sign_In is_free={is_free} slug={slug} />
           </SignedIn>
         </Stack>
       </Stack>

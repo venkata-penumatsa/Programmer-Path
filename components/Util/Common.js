@@ -1,3 +1,5 @@
+import format from "date-fns/format";
+
 // __________________________________________________
 // Function to convert minutes into hours
 // __________________________________________________
@@ -9,3 +11,7 @@ export const convertMinsToHrsMins = (mins) => {
   m = m < 10 ? "0" + m : m;
   return `${h}h-${m}m`;
 };
+
+export function fDate(date, option) {
+  return format(new Date(date), option || "yyyy-dd-MM");
+}

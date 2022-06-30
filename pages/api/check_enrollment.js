@@ -25,6 +25,7 @@ export default withAuth(async (req, res) => {
           query check_enrollment($user_id: String = "", $slug: String = "") {
             getPs_course_enrollmentsUsingSlugAndUser(slug: $slug, user_id: $user_id) {
               id
+              enrollment_start_date
             }
           } `,
           variables: {
