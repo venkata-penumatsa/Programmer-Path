@@ -26,7 +26,6 @@ export default withAuth(async (req, res) => {
             getPs_course_enrollmentsUsingSlugAndUser(slug: $slug, user_id: $user_id) {
               id
               enrollment_start_date
-  
             }
           } `,
           variables: {
