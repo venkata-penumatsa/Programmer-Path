@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 //Chakra
 import { Text, Button, useColorModeValue } from "@chakra-ui/react";
+import User_Loading from "./User_Loading";
 
 const User_Enrolled_No = ({
   user_fullname,

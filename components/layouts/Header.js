@@ -103,6 +103,8 @@ export default function WithSubnavigation() {
 
         {/* Buttons */}
 
+        <ClerkLoading>Loading...</ClerkLoading>
+
         <SignedOut>
           <Stack direction="row" spacing={2}>
             <Stack
