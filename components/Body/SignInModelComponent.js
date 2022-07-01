@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Modal,
   ModalOverlay,
@@ -14,14 +15,22 @@ import {
 } from "@chakra-ui/react";
 import { SignIn } from "@clerk/nextjs";
 
-const ModelBar = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+const SignInModelComponent = ({ isOpen, onOpen, onClose }) => {
+  const initialRef = React.useRef(null);
+  const finalRef = React.useRef(null);
+
   return (
     <div sx={{ backgroundcolor: "#1a202c" }}>
       <>
-        <Button onClick={onOpen}> Sign-In</Button>
+        {/* <Button onClick={onOpen}> Sign-In</Button> */}
 
-        <Modal isOpen={isOpen} onClose={onClose} size="lg">
+        <Modal
+          initialFocusRef={initialRef}
+          finalFocusRef={finalRef}
+          isOpen={isOpen}
+          onClose={onClose}
+          size="lg"
+        >
           <ModalOverlay />
           <ModalContent bg="#1a202c">
             <ModalCloseButton />
@@ -51,4 +60,4 @@ const ModelBar = () => {
   );
 };
 
-export default ModelBar;
+export default SignInModelComponent;
