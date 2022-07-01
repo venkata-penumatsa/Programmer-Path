@@ -17,8 +17,8 @@ const User_Enrolled_Yes = ({ user_fullname, enrollment_start_date }) => {
         textAlign="center"
       >
         {" "}
-        Hi {user_fullname} As of {enrollment_start_date}, you are enrolled in
-        this course. Click here to continue learning.
+        Hi {user_fullname}, you are enrolled in this course. Click below to
+        continue learning.
       </Text>
       <Button
         w={{ base: "100%", sm: "auto" }}

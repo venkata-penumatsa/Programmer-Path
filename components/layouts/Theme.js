@@ -1,5 +1,6 @@
 // 1. import `extendTheme` function
 import { extendTheme } from "@chakra-ui/react";
+import { StyleFunctionProps } from "@chakra-ui/theme-tools";
 
 // 2. Add your color mode config
 const config = {
@@ -12,8 +13,15 @@ const theme = extendTheme({
   config,
   fonts: {
     body: "Poppins, sans-serif",
-    heading: "Barlow, serif",
+    heading: "Poppins, serif",
     mono: "Menlo, monospace",
+  },
+  components: {
+    Model: {
+      variants: {
+        colorScheme: "#ffffff",
+      },
+    },
   },
 });
 

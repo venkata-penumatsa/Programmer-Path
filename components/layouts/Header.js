@@ -170,8 +170,8 @@ export default function WithSubnavigation() {
                   display={{ base: "none", md: "inline-flex" }}
                   fontSize={"sm"}
                   fontWeight={600}
-                  colorScheme="teal"
-                  variant="outline"
+                  // colorScheme="teal"
+                  variant="solid"
                   as={Link}
                 >
                   My Enrollments
