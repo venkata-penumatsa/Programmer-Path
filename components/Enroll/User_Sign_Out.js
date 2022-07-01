@@ -12,7 +12,7 @@ import NextLink from "next/link";
 // Components
 import SignInModelComponent from "../Body/SignInModelComponent";
 
-const User_Sign_Out = ({ is_free }) => {
+const User_Sign_Out = ({ is_free, slug }) => {
   const textColor = useColorModeValue("gray.600", "gray.400");
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -59,6 +59,7 @@ const User_Sign_Out = ({ is_free }) => {
           isOpen={isOpen}
           onOpen={onOpen}
           onClose={onClose}
+          slug={slug}
         />
       )}
     </>

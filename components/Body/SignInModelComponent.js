@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { SignIn } from "@clerk/nextjs";
 
-const SignInModelComponent = ({ isOpen, onOpen, onClose }) => {
+const SignInModelComponent = ({ isOpen, onOpen, onClose, slug }) => {
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
 
@@ -51,7 +51,7 @@ const SignInModelComponent = ({ isOpen, onOpen, onClose }) => {
                   </Text>
                 </VStack>
               </Center>
-              <SignIn />
+              <SignIn afterSignInUrl={`/course/${slug}`} />
             </ModalBody>
           </ModalContent>
         </Modal>

@@ -169,7 +169,7 @@ const HeroSection = ({
           </ClerkLoading>
 
           <SignedOut>
-            <User_Sign_Out is_free={is_free} />
+            <User_Sign_Out is_free={is_free} slug={slug} />
           </SignedOut>
 
           <SignedIn>
