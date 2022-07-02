@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import {
   chakra,
   Box,
@@ -14,13 +14,13 @@ import {
   AccordionButton,
   AccordionIcon,
   AccordionPanel,
-} from '@chakra-ui/react'
-import VerticalDivider from '../../shared/VerticalDivider'
-import { FaRegHandPointRight } from 'react-icons/fa'
-import { TiTickOutline } from 'react-icons/ti'
+} from "@chakra-ui/react";
+import VerticalDivider from "../../Util/VerticalDivider";
+import { FaRegHandPointRight } from "react-icons/fa";
+import { TiTickOutline } from "react-icons/ti";
 
 const LessonsSection = ({ lessons }) => {
-  const [selectedId, setSelectedId] = useState(0)
+  const [selectedId, setSelectedId] = useState(0);
 
   return (
     <Box>
@@ -46,18 +46,18 @@ const LessonsSection = ({ lessons }) => {
                   {lesson.title}
                 </Box>
                 <Stack
-                  direction={{ base: 'column', sm: 'row' }}
+                  direction={{ base: "column", sm: "row" }}
                   alignItems="center"
                   fontSize="sm"
                 >
                   <chakra.span>
-                    {lesson.content.length}{' '}
-                    {`Lesson${lesson.content.length > 1 ? 's' : ''}`}
+                    {lesson.content.length}{" "}
+                    {`Lesson${lesson.content.length > 1 ? "s" : ""}`}
                   </chakra.span>
                   <VerticalDivider
                     height="15px"
-                    display={{ base: 'none', sm: 'block' }}
-                  />{' '}
+                    display={{ base: "none", sm: "block" }}
+                  />{" "}
                   <chakra.span>10 min</chakra.span>
                 </Stack>
               </AccordionButton>
@@ -74,7 +74,7 @@ const LessonsSection = ({ lessons }) => {
                   >
                     <HStack
                       bg={
-                        selectedId === content.id ? 'teal.400' : 'transparent'
+                        selectedId === content.id ? "teal.400" : "transparent"
                       }
                       w="90%"
                       p={3}
@@ -94,8 +94,8 @@ const LessonsSection = ({ lessons }) => {
         ))}
       </Accordion>
     </Box>
-  )
-}
+  );
+};
 
 const Heading = ({ icon, text }) => {
   return (
@@ -105,7 +105,7 @@ const Heading = ({ icon, text }) => {
         {text}
       </Text>
     </Flex>
-  )
-}
+  );
+};
 
-export default LessonsSection
+export default LessonsSection;

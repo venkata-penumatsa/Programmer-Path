@@ -16,7 +16,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { BsFillPlayCircleFill } from "react-icons/bs";
-import VerticalDivider from "../shared/VerticalDivider";
+import VerticalDivider from "../Util/VerticalDivider";
 import NextLink from "next/link";
 import { convertMinsToHrsMins } from "../Util/Common";
 

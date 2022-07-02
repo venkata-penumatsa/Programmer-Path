@@ -1,6 +1,6 @@
 import React from "react";
 import { chakra, Stack, Icon, HStack } from "@chakra-ui/react";
-import VerticalDivider from "../../shared/VerticalDivider";
+import VerticalDivider from "../../Util/VerticalDivider";
 import { FaReact, FaChalkboardTeacher, FaRegFolderOpen } from "react-icons/fa";
 import { BsClock } from "react-icons/bs";
 

@@ -34,7 +34,7 @@ const SignInModelComponent = ({ isOpen, onOpen, onClose, slug }) => {
           <ModalOverlay />
           <ModalContent bg="#1a202c">
             <ModalCloseButton />
-            <ModalBody pb={10}>
+            <ModalBody>
               <Center>
                 <VStack>
                   <Text fontWeight="black" fontSize="xl">
@@ -49,9 +49,10 @@ const SignInModelComponent = ({ isOpen, onOpen, onClose, slug }) => {
                     If you are a first-time visitor, Create an account by
                     clicking Sign-Up.
                   </Text>
+
+                  <SignIn afterSignInUrl={`/course/${slug}`} />
                 </VStack>
               </Center>
-              <SignIn afterSignInUrl={`/course/${slug}`} />
             </ModalBody>
           </ModalContent>
         </Modal>

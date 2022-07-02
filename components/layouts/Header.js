@@ -18,6 +18,7 @@ import NextLink from "next/link";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import ColorModeSwitcher from "./ColorModeSwitcher";
 import { GiFlowerPot } from "react-icons/gi";
+import CircularLoading from "../Util/CircularLoading";
 // Clerk
 import { SignedIn, SignedOut, UserButton, ClerkLoading } from "@clerk/nextjs";
 
@@ -103,7 +104,9 @@ export default function WithSubnavigation() {
 
         {/* Buttons */}
 
-        <ClerkLoading>Loading...</ClerkLoading>
+        <ClerkLoading>
+          <CircularLoading />
+        </ClerkLoading>
 
         <SignedOut>
           <Stack direction="row" spacing={2}>

@@ -16,12 +16,12 @@ import {
   useColorModeValue,
   Link,
 } from "@chakra-ui/react";
-import Badge from "../shared/Badge";
+import Badge from "../Util/Badge";
 import { BsClock, BsBarChartLine } from "react-icons/bs";
 import { MdLanguage } from "react-icons/md";
 import { FaPlay, FaStar } from "react-icons/fa";
 import FormModal from "./FormModal";
-import VerticalDivider from "../shared/VerticalDivider";
+import VerticalDivider from "../Util/VerticalDivider";
 import { convertMinsToHrsMins } from "../Util/Common";
 
 // Clerk

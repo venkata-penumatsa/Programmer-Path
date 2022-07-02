@@ -1,6 +1,6 @@
-import React from 'react'
-import { chakra, Box, Flex } from '@chakra-ui/react'
-import Badge from '../shared/Badge'
+import React from "react";
+import { chakra, Box, Flex } from "@chakra-ui/react";
+import Badge from "../Util/Badge";
 
 const SkillsSection = ({ skills }) => {
   return (
@@ -14,7 +14,7 @@ const SkillsSection = ({ skills }) => {
         ))}
       </Flex>
     </Box>
-  )
-}
+  );
+};
 
-export default SkillsSection
+export default SkillsSection;

@@ -19,8 +19,8 @@ import NextLink from "next/link";
 import { FaStar } from "react-icons/fa";
 import { BsClock, BsBarChartLine } from "react-icons/bs";
 import { MdLanguage } from "react-icons/md";
-import Badge from "../shared/Badge";
-import VerticalDivider from "../shared/VerticalDivider";
+import Badge from "../Util/Badge";
+import VerticalDivider from "../Util/VerticalDivider";
 import { convertMinsToHrsMins } from "../Util/Common";
 
 const CourseCard = (props) => {
