@@ -5,8 +5,8 @@ My Academy is a Learning Management System application that can be used by any t
 ## Table of content
 
 1. [About the project & Quick overview](https://github.com/venkata-penumatsa/Programmer-Path/blob/main/README.md#about-the-project--quick-overview)
-2. What is the stack behind this project?
-3. Features
+2. [What is the stack behind this project?](https://github.com/venkata-penumatsa/Programmer-Path/blob/main/README.md#what-is-the-stack-behind-this-project)
+3. [Features](https://github.com/venkata-penumatsa/Programmer-Path/blob/main/README.md#features-1)
 
 
 ##  About the project & Quick overview
@@ -16,7 +16,7 @@ This web application primarily consists of three important pages: the (1) Home p
 ## What is the stack behind this project?
 
 
-## Features
+
 
 
 ## Features
