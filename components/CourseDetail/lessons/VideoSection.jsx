@@ -8,18 +8,18 @@ const VideoSection = () => {
     <Flex direction={{ base: "column", lg: "row" }} mb={{ base: 5, md: 1 }}>
       {/* Left Video Panel */}
       <AspectRatio w={{ base: "100%", lg: "68%" }} ratio={18 / 9}>
-        <iframe
-          title="naruto"
-          src="https://www.youtube.com/embed/9LNaQln11BA"
-          allowFullScreen
-        />
         {/* <iframe
+          title="naruto"
+          src="https://youtu.be/pPwVCIvO7tg"
+          allowFullScreen
+        /> */}
+        <iframe
           width="560"
           height="315"
-          src="https://www.youtube.com/embed/9LNaQln11BA"
+          src="https://www.youtube.com/embed/QhBnZ6NPOY0"
           title="YouTube video player"
           allowfullscreen
-        ></iframe> */}
+        ></iframe>
       </AspectRatio>
 
       {/* Right Lessons List */}
