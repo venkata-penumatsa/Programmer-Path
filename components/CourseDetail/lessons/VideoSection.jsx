@@ -18,7 +18,7 @@ const VideoSection = () => {
           height="315"
           src="https://www.youtube.com/embed/QhBnZ6NPOY0"
           title="YouTube video player"
-          allowfullscreen
+          allowFullScreen
         ></iframe>
       </AspectRatio>
 
