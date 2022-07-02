@@ -61,6 +61,7 @@ const User_Sign_In = ({ is_free, slug }) => {
 
       {enrolled > 0 && (
         <User_Enrolled_Yes
+          slug={slug}
           user_fullname={user.fullName}
           enrollment_start_date={enrolled.enrollment_start_date}
         />
