@@ -1,6 +1,4 @@
-import { GraphQLClient, gql } from "graphql-request";
 import { withAuth } from "@clerk/nextjs/api";
-const axios = require("axios");
 
 export default withAuth(async (req, res) => {
   console.log("hellow world");
