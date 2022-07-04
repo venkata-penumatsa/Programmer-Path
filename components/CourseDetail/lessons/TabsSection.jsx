@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   chakra,
   Tabs,
@@ -7,35 +7,35 @@ import {
   TabPanels,
   TabPanel,
   Icon,
-} from '@chakra-ui/react'
+} from "@chakra-ui/react";
 import {
   AiOutlineStar,
   AiOutlineQuestionCircle,
   AiOutlineUnorderedList,
   AiOutlineInfoCircle,
   AiOutlineDollarCircle,
-} from 'react-icons/ai'
+} from "react-icons/ai";
 
 const tabsList = [
-  { heading: 'Q&A', data: 'Q&A Data', icon: AiOutlineQuestionCircle },
+  { heading: "Q&A", data: "Q&A Data", icon: AiOutlineQuestionCircle },
   {
-    heading: 'Review & Ratings',
-    data: 'Review & Ratings Data',
+    heading: "Review & Ratings",
+    data: "Review & Ratings Data",
     icon: AiOutlineStar,
   },
-  { heading: 'Overview', data: 'Overview Data', icon: AiOutlineUnorderedList },
+  { heading: "Overview", data: "Overview Data", icon: AiOutlineUnorderedList },
   {
-    heading: 'About Trainer',
-    data: 'About Trainer Data',
+    heading: "About Trainer",
+    data: "About Trainer Data",
     icon: AiOutlineInfoCircle,
   },
-  { heading: 'Donate', data: 'Donate Data', icon: AiOutlineDollarCircle },
-]
+  { heading: "Donate", data: "Donate Data", icon: AiOutlineDollarCircle },
+];
 
 const TabsSection = () => {
   return (
     <Tabs>
-      <TabList overflowY={{ base: 'scroll', md: 'inherit' }}>
+      <TabList overflowY={{ base: "scroll", md: "inherit" }}>
         {tabsList.map((tab, index) => (
           <Tab key={index}>
             <Icon as={tab.icon} w={4} h={4} />
@@ -54,7 +54,7 @@ const TabsSection = () => {
         ))}
       </TabPanels>
     </Tabs>
-  )
-}
+  );
+};
 
-export default TabsSection
+export default TabsSection;

@@ -2,24 +2,24 @@ import React from "react";
 import { Flex, Stack, AspectRatio } from "@chakra-ui/react";
 import LessonsSection from "./LessonsSection";
 import { lessons } from "../../../data/courses";
+import dynamic from "next/dynamic";
 
-const VideoSection = () => {
+const VideoSection = ({ data }) => {
+  const ReactPlayer = dynamic(() => import("react-player/lazy"), {
+    ssr: false,
+  });
+
+  console.log("video data", data);
   return (
     <Flex direction={{ base: "column", lg: "row" }} mb={{ base: 5, md: 1 }}>
       {/* Left Video Panel */}
       <AspectRatio w={{ base: "100%", lg: "68%" }} ratio={18 / 9}>
-        {/* <iframe
-          title="naruto"
-          src="https://youtu.be/pPwVCIvO7tg"
-          allowFullScreen
-        /> */}
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/QhBnZ6NPOY0"
-          title="YouTube video player"
-          allowFullScreen
-        ></iframe>
+        <ReactPlayer
+          url="https://www.youtube.com/embed/QhBnZ6NPOY0"
+          width="100%"
+          height="100%"
+          controls={true}
+        />
       </AspectRatio>
 
       {/* Right Lessons List */}

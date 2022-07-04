@@ -7,18 +7,25 @@ import { BsClock } from "react-icons/bs";
 const data = [
   { text: "REACT JS BASICS", icon: FaReact },
   { text: "NAGS", icon: FaChalkboardTeacher },
-  { text: "TOTAL LESSONS - 5", icon: FaRegFolderOpen },
-  { text: "TOTAL DURATION - 02H:30M", icon: BsClock },
+  // { text: "TOTAL LESSONS - 5", icon: FaRegFolderOpen },
+  // { text: "TOTAL DURATION - 02H:30M", icon: BsClock },
 ];
 
-const TopBar = () => {
+const TopBar = ({ slug, trainer_name }) => {
+  console.log("props received", slug, trainer_name);
+
+  const data = [
+    { text: slug, icon: FaReact },
+    { text: trainer_name, icon: FaChalkboardTeacher },
+  ];
+
   return (
     <Stack
       direction={{ base: "column", sm: "row" }}
       spacing={5}
       alignItems={{ base: "flex-start", sm: "center" }}
-      justifyContent="center"
-      mb={3}
+      justifyContent="flex-start"
+      mb={5}
       flexWrap="wrap"
       divider={<VerticalDivider display={{ base: "none", sm: "block" }} />}
     >
