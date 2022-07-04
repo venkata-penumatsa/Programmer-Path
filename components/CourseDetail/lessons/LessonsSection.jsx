@@ -30,13 +30,13 @@ const LessonsSection = ({ lessons }) => {
           <VerticalDivider />
           <Heading icon={TiTickOutline} text="Completed Lessons - 2/2" />
         </Stack>
-        <Stack direction="row" alignItems="center" spacing={2}>
+        {/* <Stack direction="row" alignItems="center" spacing={2}>
           <Progress value={20} size="xs" colorScheme="yellow" w="90%" />
           <chakra.span>20%</chakra.span>
-        </Stack>
+        </Stack> */}
       </Box>
 
-      <Accordion defaultIndex={[0]} allowMultiple h="21rem" overflowY="scroll">
+      <Accordion defaultIndex={[0]} allowMultiple h="22rem" overflowY="scroll">
         {lessons.map((lesson, index) => (
           <AccordionItem key={index}>
             <h2>
@@ -85,7 +85,7 @@ const LessonsSection = ({ lessons }) => {
                         {index + 1}) {content.title}
                       </chakra.h2>
                     </HStack>
-                    <Checkbox colorScheme="teal" />
+                    {/* <Checkbox colorScheme="teal" /> */}
                   </Flex>
                 ))}
               </Stack>
