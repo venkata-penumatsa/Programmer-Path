@@ -4,7 +4,9 @@ export default withAuth(async (req, res) => {
   console.log("hellow world");
   if (req.method === "POST") {
     const { userId, sessionId } = req.auth;
-    if (!userId || !sessionId) {
+    const slug = req.body.slug;
+    console.log("sluggg", slug);
+    if (!userId || !sessionId || !slug) {
       return res.status(500).json({ error: "user not logged in, try again" });
     } else {
       console.log("hellow world2");
@@ -29,12 +31,13 @@ export default withAuth(async (req, res) => {
                   id
                   video_url_main
                   video_length_in_minutes
+                  
                 }
               }
             }
           }          
         `,
-        variables: { slug: "what_is_graphql" },
+        variables: { slug: slug },
       };
 
       const options = {

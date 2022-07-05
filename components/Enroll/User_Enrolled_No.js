@@ -2,6 +2,8 @@ import React, { useState } from "react";
 //Chakra
 import { Text, Button, useColorModeValue } from "@chakra-ui/react";
 import User_Loading from "./User_Loading";
+// swr
+import useSWR, { mutate } from "swr";
 
 const User_Enrolled_No = ({
   user_fullname,
@@ -34,9 +36,10 @@ const User_Enrolled_No = ({
       // console.log(response_formatted);
       // const id = response_formatted.data.insertPs_course_enrollments.id;
       // console.log("id", id);
-      if (response_formatted.data) {
-        setRerender(true);
-      }
+      // if (response_formatted.data) {
+      //   setRerender(true);
+      // }
+      mutate("/api/check_enrollment");
     }
   };
 

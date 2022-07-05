@@ -4,66 +4,51 @@ import TopBar from "./TopBar";
 import VideoSection from "./VideoSection";
 import TabsSection from "./TabsSection";
 import CircularLoading from "../../Util/CircularLoading";
+import useSWR from "swr";
+import { useRouter } from "next/router";
+
+const fetcher = async (url, slug) => {
+  console.log(url, slug);
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      slug,
+    }),
+  });
+
+  const data = await response.json();
+  return data;
+};
 
 const Main = () => {
-  const [data, setData] = useState();
+  const router = useRouter();
+  console.log("router is", router.query.slug);
 
-  useEffect(() => {
-    let ignore = false;
+  const url = "/api/get_lessons";
+  const slug = router.query.slug;
 
-    const load_data = async () => {
-      console.log("Mainnn2");
-      const response = await fetch("/api/get_lessons", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+  const { data, error } = useSWR([url, slug], fetcher);
 
-      // const final_response = await response.data_json;
-      // console.log("final response is", await response.json());
-
-      if (!response.ok) {
-        console.log("nasty error", response.status, "- ", response.statusText);
-      }
-
-      if (response.ok) {
-        const data = await response.json();
-        // console.log("final response 2", data);
-        if (!ignore) {
-          console.log("inside ignore");
-          setData(data);
-        }
-      }
-    };
-
-    load_data();
-
-    return () => {
-      ignore = true;
-    };
-  }, []);
-
-  console.log("lesson-data", data);
+  if (error) return `"Error is" ${error.message}"`;
+  if (!data) return "Loading...";
 
   return (
     <Container maxWidth={"6xl"}>
-      {!data ? (
-        <CircularLoading />
-      ) : (
-        <>
-          <Box>
-            <TopBar
-              slug={data.data.slug}
-              trainer_name={data.data.trainer_name}
-              total_sections={data.data.ps_course_categoryList.length}
-              total_lessons={10}
-            />
-            <VideoSection data={data.data.ps_course_categoryList} />
-            <TabsSection />
-          </Box>
-        </>
-      )}
+      <>
+        <Box>
+          <TopBar
+            slug={data.data.slug}
+            trainer_name={data.data.trainer_name}
+            total_sections={data.data.ps_course_categoryList.length}
+            total_lessons={10}
+          />
+          <VideoSection data={data.data.ps_course_categoryList} />
+          <TabsSection />
+        </Box>
+      </>
     </Container>
   );
 };
