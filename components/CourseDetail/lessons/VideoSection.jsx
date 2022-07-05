@@ -1,26 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Flex, Stack, AspectRatio } from "@chakra-ui/react";
 import LessonsSection from "./LessonsSection";
 import { lessons } from "../../../data/courses";
 import dynamic from "next/dynamic";
+import CircularLoading from "../../Util/CircularLoading";
 
 const VideoSection = ({ data }) => {
+  const [current_video, setCurrent_Video] = useState(null);
   const ReactPlayer = dynamic(() => import("react-player/lazy"), {
     ssr: false,
   });
 
-  console.log("video data", data);
+  useEffect(() => {
+    let ignore = false;
+    const first_video = data[0].ps_lessonsListUsingCategory2[0].video_url_main;
+    console.log("first video", first_video);
+    if (!ignore) {
+      setCurrent_Video(first_video);
+    }
+    return () => {
+      ignore = true;
+    };
+  }, []);
+
+  console.log("state CurrentVideo", current_video);
+
   return (
     <Flex direction={{ base: "column", lg: "row" }} mb={{ base: 5, md: 1 }}>
       {/* Left Video Panel */}
-      <AspectRatio w={{ base: "100%", lg: "65%" }} ratio={18 / 9}>
-        <ReactPlayer
-          url="https://vz-1f67a773-3cd.b-cdn.net/9c3dee84-cab1-41fa-b777-9baabb050f88/playlist.m3u8"
-          width="100%"
-          height="100%"
-          controls={true}
-        />
-      </AspectRatio>
+
+      {current_video ? (
+        <AspectRatio w={{ base: "100%", lg: "65%" }} ratio={18 / 9}>
+          <ReactPlayer
+            url={current_video}
+            width="100%"
+            height="100%"
+            controls={true}
+          />
+        </AspectRatio>
+      ) : (
+        <CircularLoading />
+      )}
 
       {/* Right Lessons List */}
       <Stack
@@ -28,7 +48,7 @@ const VideoSection = ({ data }) => {
         ml={{ base: 0, lg: 5 }}
         w={{ base: "100%", lg: "35%" }}
       >
-        <LessonsSection lessons={lessons} />
+        <LessonsSection lessons={data} setCurrent_Video={setCurrent_Video} />
       </Stack>
     </Flex>
   );

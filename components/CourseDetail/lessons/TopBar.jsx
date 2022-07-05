@@ -1,22 +1,22 @@
 import React from "react";
 import { chakra, Stack, Icon, HStack } from "@chakra-ui/react";
 import VerticalDivider from "../../Util/VerticalDivider";
-import { FaReact, FaChalkboardTeacher, FaRegFolderOpen } from "react-icons/fa";
+import {
+  FaReact,
+  FaChalkboardTeacher,
+  FaAlignJustify,
+  FaBars,
+} from "react-icons/fa";
 import { BsClock } from "react-icons/bs";
 
-const data = [
-  { text: "REACT JS BASICS", icon: FaReact },
-  { text: "NAGS", icon: FaChalkboardTeacher },
-  // { text: "TOTAL LESSONS - 5", icon: FaRegFolderOpen },
-  // { text: "TOTAL DURATION - 02H:30M", icon: BsClock },
-];
-
-const TopBar = ({ slug, trainer_name }) => {
+const TopBar = ({ slug, trainer_name, total_sections, total_lessons }) => {
   console.log("props received", slug, trainer_name);
 
   const data = [
     { text: slug, icon: FaReact },
     { text: trainer_name, icon: FaChalkboardTeacher },
+    { text: `Total sections - ${total_sections}`, icon: FaBars },
+    { text: `Total lessons - ${total_lessons}`, icon: FaBars },
   ];
 
   return (
@@ -40,7 +40,7 @@ const BarItem = ({ icon, text }) => {
   return (
     <HStack spacing={3}>
       <Icon as={icon} w={5} h={5} />
-      <chakra.h3 fontSize="sm" fontWeight="bold">
+      <chakra.h3 fontSize="xs" fontWeight="medium">
         {text}
       </chakra.h3>
     </HStack>

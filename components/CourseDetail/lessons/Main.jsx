@@ -56,6 +56,8 @@ const Main = () => {
             <TopBar
               slug={data.data.slug}
               trainer_name={data.data.trainer_name}
+              total_sections={data.data.ps_course_categoryList.length}
+              total_lessons={10}
             />
             <VideoSection data={data.data.ps_course_categoryList} />
             <TabsSection />
