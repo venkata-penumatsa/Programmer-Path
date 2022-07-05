@@ -1,18 +1,13 @@
 //React
-import React, { Fragment, useEffect, useState } from "react";
+import React from "react";
 //Chakra
 import { useColorModeValue, Button, Text, Link } from "@chakra-ui/react";
 // Clerk
 import { useUser } from "@clerk/nextjs";
 //Components
-import User_Enrolled_Yes from "./User_Enrolled_Yes";
-import User_Enrolled_No from "./User_Enrolled_No";
-import ErrorAlert from "../Util/ErrorAlert";
 import User_Loading from "./User_Loading";
 //swr
 import useSWR from "swr";
-//uuid
-import { v4 as uuidv4 } from "uuid";
 // Next JS
 import NextLink from "next/link";
 
@@ -35,12 +30,6 @@ const User_Sign_In = ({ is_free, slug }) => {
   const textColor = useColorModeValue("gray.600", "gray.400");
 
   const { user } = useUser();
-  const uuid_gen = uuidv4();
-  const [isLoading, setLoading] = useState(true);
-  const [enrolled, setEnrolled] = useState();
-  const [enrolled_error, setEnrolledError] = useState();
-  const [rerender, setRerender] = useState(false);
-  const [temp, setTemp] = useState();
 
   const url = "/api/check_enrollment";
   const slug_in = slug;
@@ -55,6 +44,27 @@ const User_Sign_In = ({ is_free, slug }) => {
   if (data) {
     console.log("data is", data.data);
   }
+
+  const enrollz = async () => {
+    const response = await fetch("/api/insert_enrollment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        slug: slug,
+      }),
+    });
+
+    if (!response.ok) {
+      console.log("error");
+    }
+
+    if (response.ok) {
+      const data = await response.json();
+      mutate();
+    }
+  };
 
   return (
     <>
@@ -88,26 +98,7 @@ const User_Sign_In = ({ is_free, slug }) => {
             zIndex={5}
             lineHeight={1}
             colorScheme="teal"
-            onClick={async () => {
-              const response = await fetch("/api/insert_enrollment", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  slug: slug,
-                }),
-              });
-
-              if (!response.ok) {
-                console.log("error");
-              }
-
-              if (response.ok) {
-                const data = await response.json();
-                mutate();
-              }
-            }}
+            onClick={enrollz}
           >
             Enroll Now...
           </Button>
