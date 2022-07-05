@@ -28,7 +28,10 @@ const LessonsSection = ({ lessons, setCurrent_Video }) => {
     <Box>
       <Box mb={3}>
         <Stack direction="row" spacing={2} alignItems="center" mb={2}>
-          <Heading icon={FaRegHandPointRight} text="Current Lesson - 1" />
+          <Heading
+            icon={FaRegHandPointRight}
+            text={`Current Lesson - ${selectedId}`}
+          />
           {/* <VerticalDivider />
           <Heading icon={TiTickOutline} text="Completed Lessons - 2/2" /> */}
         </Stack>
