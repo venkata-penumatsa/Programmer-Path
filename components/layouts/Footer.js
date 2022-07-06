@@ -9,14 +9,18 @@ import {
   SimpleGrid,
   VisuallyHidden,
   useColorModeValue,
-} from '@chakra-ui/react'
-import { FaTwitter } from 'react-icons/fa'
+  HStack,
+} from "@chakra-ui/react";
+// Icons
+import { GiFlowerPot } from "react-icons/gi";
+// Components
+import FooterMessage from "./FooterMessage";
 
 export default function Footer() {
   return (
     <Box
-      bg={useColorModeValue('gray.50', 'gray.900')}
-      color={useColorModeValue('gray.700', 'gray.200')}
+      bg={useColorModeValue("gray.50", "gray.900")}
+      color={useColorModeValue("gray.700", "gray.200")}
     >
       <Stack
         maxW="7xl"
@@ -32,36 +36,37 @@ export default function Footer() {
         }}
       >
         <SimpleGrid
-          templateColumns={{ sm: '1fr 1fr', md: '2fr 1fr 1fr 1fr' }}
-          spacing={8}
+          templateColumns={{ sm: "1fr 1fr", md: "2fr 1fr 1fr 1fr" }}
+          spacing={1}
         >
           <Stack spacing={6}>
-            <Box>Logo</Box>
-            <Text fontSize={'sm'}>© 2022 All rights reserved</Text>
+            <HStack>
+              <GiFlowerPot size={25} />
+              <Text as={Link} fontWeight="black" fontSize="xl">
+                Programmer Path
+              </Text>
+            </HStack>
+            <Text fontSize={"xs"} pl={8}>
+              {" "}
+              {"   "} © 2022 All rights reserved
+            </Text>
           </Stack>
-          <Stack align={'flex-start'}>
+          <Stack align={"flex-start"}>
+            <ListHeader>All Links</ListHeader>
+            <Link href={"#"}>About us</Link>
+            <Link href={"#"}>Contact us</Link>
+          </Stack>
+          <Stack align={"flex-start"}>
+            <ListHeader>Legal</ListHeader>
+
+            <Link href={"#"}>Terms of Service</Link>
+            <Link href={"#"}>Privacy Policy</Link>
+          </Stack>
+          <Stack align={"flex-start"}>
             <ListHeader>Company</ListHeader>
-            <Link href={'#'}>About us</Link>
-            <Link href={'#'}>Blog</Link>
-            <Link href={'#'}>Contact us</Link>
-            <Link href={'#'}>Pricing</Link>
-            <Link href={'#'}>Testimonials</Link>
-          </Stack>
-          <Stack align={'flex-start'}>
-            <ListHeader>Support</ListHeader>
-            <Link href={'#'}>Help Center</Link>
-            <Link href={'#'}>Terms of Service</Link>
-            <Link href={'#'}>Legal</Link>
-            <Link href={'#'}>Privacy Policy</Link>
-            <Link href={'#'}>Satus</Link>
-          </Stack>
-          <Stack align={'flex-start'}>
-            <ListHeader>Company</ListHeader>
-            <Link href={'#'}>About us</Link>
-            <Link href={'#'}>Blog</Link>
-            <Link href={'#'}>Contact us</Link>
-            <Link href={'#'}>Pricing</Link>
-            <Link href={'#'}>Testimonials</Link>
+
+            <Link href={"#"}>Blog</Link>
+            <Link href={"#"}>Contact us</Link>
           </Stack>
         </SimpleGrid>
       </Stack>
@@ -80,47 +85,17 @@ export default function Footer() {
         }}
       >
         <Stack direction="column" alignItems="center">
-          <Text textAlign="center">
-            Education’s purpose is to replace an empty mind with an open one -
-            Malcolm Forbes
-          </Text>
-          <SocialButton label={'Twitter'} href={'#'}>
-            <FaTwitter />
-          </SocialButton>
+          <FooterMessage />
         </Stack>
       </Center>
     </Box>
-  )
-}
-
-const SocialButton = ({ children, label, href }) => {
-  return (
-    <chakra.button
-      bg={useColorModeValue('blackAlpha.100', 'whiteAlpha.100')}
-      rounded={'full'}
-      w={8}
-      h={8}
-      cursor={'pointer'}
-      as={'a'}
-      href={href}
-      display={'inline-flex'}
-      alignItems={'center'}
-      justifyContent={'center'}
-      transition={'background 0.3s ease'}
-      _hover={{
-        bg: useColorModeValue('blackAlpha.200', 'whiteAlpha.200'),
-      }}
-    >
-      <VisuallyHidden>{label}</VisuallyHidden>
-      {children}
-    </chakra.button>
-  )
+  );
 }
 
 const ListHeader = ({ children }) => {
   return (
-    <Text fontWeight={'500'} fontSize={'lg'} mb={2}>
+    <Text fontWeight={"500"} fontSize={"lg"} mb={2}>
       {children}
     </Text>
-  )
-}
+  );
+};

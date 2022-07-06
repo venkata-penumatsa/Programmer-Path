@@ -16,25 +16,16 @@ export default withAuth(async (req, res) => {
       };
 
       const graphqlQuery = {
-        operationName: "lessons_by_slug",
-        query: `query lessons_by_slug($slug: String = "") {
-            getPs_course(slug: $slug) {
-                slug
-                trainer_name
-              ps_course_categoryList {
-                sort_id
-                category
-                total_lessons
-                ps_lessonsListUsingCategory2 {
-                  id
-                  video_url_main
-                  video_length_in_minutes
-                }
-              }
-            }
-          }          
-        `,
-        variables: { slug: "what_is_graphql" },
+        operationName: "get_my_enrollments",
+        query: `query get_my_enrollments($user_id: String = "") {
+          getPs_course_enrollmentsUsingUserOnly(user_id: $user_id) {
+            slug
+            user_id
+            enrollment_start_date
+            created_at
+          }
+        }`,
+        variables: { user_id: userId },
       };
 
       const options = {
@@ -46,11 +37,13 @@ export default withAuth(async (req, res) => {
       const response = await fetch(endpoint, options);
       const data = await response.json();
 
-      console.log("server data", data.data.getPs_course); // data
+      console.log("server data", data.data); // data
       //   console.log("errors", data.errors); //
 
       if (data.data) {
-        res.status(200).json({ data: data.data.getPs_course });
+        res
+          .status(200)
+          .json({ data: data.data.getPs_course_enrollmentsUsingUserOnly });
       }
 
       if (data.errors) {

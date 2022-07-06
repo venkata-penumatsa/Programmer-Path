@@ -1,13 +1,11 @@
-// import { withServerSideAuth } from "@clerk/nextjs/ssr";
+import MyEnrollmentComponent from "../components/Enroll/MyEnrollmentComponent";
 
 const myEnrollments = () => {
-  return <div>myEnrollments</div>;
+  return (
+    <div>
+      <MyEnrollmentComponent />
+    </div>
+  );
 };
 
 export default myEnrollments;
-
-export async function getServerSideProps() {
-  return {
-    props: { Key: "Hello World" },
-  };
-}
