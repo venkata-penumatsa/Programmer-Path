@@ -18,6 +18,7 @@ import {
   overviewDescription,
 } from "../../data/courses";
 import TrainerProfile from "./TrainerProfile";
+import { NextSeo } from "next-seo";
 
 const Main = ({ data }) => {
   console.log("single page data", data);
@@ -38,10 +39,12 @@ const Main = ({ data }) => {
     number_of_enrollments,
     img_url,
     ps_course_categoryList,
+    ps_seoList,
   } = data.getPs_course;
 
   return (
     <Box>
+      <NextSeo title={ps_seoList[0].title} description={ps_seoList[0].desc} />
       <BreadcrumbSection />
       <HeroSection
         slug={slug}

@@ -52,7 +52,6 @@ export async function getStaticProps() {
   console.log("data2", data); // data
   const data2 = data.data;
 
-
   console.log("Index", data2); // data
   // console.log(data2.errors); //error
 

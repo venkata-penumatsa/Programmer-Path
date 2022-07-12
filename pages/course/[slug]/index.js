@@ -60,7 +60,8 @@ export async function getStaticProps({ params }) {
 
   const graphqlQuery = {
     operationName: "get_single_lesson",
-    query: `query get_single_lesson($slug: String = "") {
+    query: `
+    query get_single_lesson($slug: String = "") {
       getPs_course(slug: $slug) {
         slug
         price
@@ -94,8 +95,15 @@ export async function getStaticProps({ params }) {
             video_url_preview
           }
         }
+        ps_seoList {
+          id
+          title
+          desc
+          image
+        }
       }
-    }`,
+    }    
+     `,
     variables: {
       slug: params.slug,
     },
