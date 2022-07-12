@@ -32,6 +32,7 @@ import { redirect } from "next/dist/server/api-utils";
 import User_Sign_Out from "../Enroll/User_Sign_Out";
 import User_Sign_In from "../Enroll/User_Sign_In";
 import User_Loading from "../Enroll/User_Loading";
+import PreviewModelComponent from "../Body/PreviewModelComponent";
 
 const HeroSection = ({
   slug,
@@ -51,6 +52,7 @@ const HeroSection = ({
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const textColor = useColorModeValue("gray.600", "gray.400");
+  const [preview, setPreview] = useState(false);
 
   return (
     <Fragment>
@@ -141,7 +143,7 @@ const HeroSection = ({
               top="50%"
               _hover={{ shadow: "md" }}
               transform="translateX(-50%) translateY(-50%)"
-              // onClick={previewlesson}
+              onClick={onOpen}
             />
             <Image
               alt="Hero Image"
@@ -177,6 +179,14 @@ const HeroSection = ({
           </SignedIn>
         </Stack>
       </Stack>
+
+      {isOpen && (
+        <PreviewModelComponent
+          isOpen={isOpen}
+          onOpen={onOpen}
+          onClose={onClose}
+        />
+      )}
     </Fragment>
   );
 };

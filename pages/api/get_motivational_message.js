@@ -22,6 +22,7 @@ async function get_motivational_message(req, res) {
       query: `query get_motivational_message($id: ID = "") {
         getMotivation(id: $id) {
           message
+          author
         }
       }
       `,
@@ -41,7 +42,7 @@ async function get_motivational_message(req, res) {
     //   console.log("errors", data.errors); //
 
     if (data.data) {
-      res.status(200).json({ data: data.data.getMotivation.message });
+      res.status(200).json({ data: data.data.getMotivation });
     }
 
     if (data.errors) {

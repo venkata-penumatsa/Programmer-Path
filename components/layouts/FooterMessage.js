@@ -6,9 +6,11 @@ import {
   Text,
   VisuallyHidden,
   useColorModeValue,
+  Tooltip,
 } from "@chakra-ui/react";
 // Icons
 import { FaTwitter } from "react-icons/fa";
+import { ExternalLinkIcon } from "@chakra-ui/icons";
 //swr
 import useSWR from "swr";
 // loader
@@ -36,16 +38,20 @@ const FooterMessage = () => {
     return <CircularLoading />;
   }
 
-  if (data) {
-    console.log("data is", data.data);
-  }
+  // if (data) {
+  //   console.log("data is", data);
+  // }
 
   return (
     <>
-      <SocialButton label={"Twitter"} href={"#"}>
-        <FaTwitter />
+      <SocialButton label={"Twitter"}>
+        <Link href="https://twitter.com/VenkatPenumatsa" isExternal>
+          <FaTwitter />
+        </Link>
       </SocialButton>
-      <Text textAlign="center">{data.data}</Text>
+      <Text textAlign="center">
+        {data.data.message} - {data.data.author}{" "}
+      </Text>
     </>
   );
 };
