@@ -27,6 +27,7 @@ const Main = ({ data }) => {
     slug,
     short_desc,
     long_desc,
+    overview,
     trainer_name,
     trainer_avatar,
     total_reviews,
@@ -40,6 +41,8 @@ const Main = ({ data }) => {
     img_url,
     ps_course_categoryList,
     ps_seoList,
+    ps_what_you_will_learnList,
+    ps_skills_you_will_gainList,
   } = data.getPs_course;
 
   return (
@@ -64,9 +67,9 @@ const Main = ({ data }) => {
       />
       <Stack spacing={10} maxW="3xl">
         <LessonsSection lessons={ps_course_categoryList} />
-        <FeaturesSection features={features} />
-        <SkillsSection skills={skills} />
-        <OverviewSection description={overviewDescription} />
+        <FeaturesSection features={ps_what_you_will_learnList} />
+        <SkillsSection skills={ps_skills_you_will_gainList} />
+        <OverviewSection description={overview} />
         <TrainerProfile />
         <ReviewsSection reviewData={reviewData} ratingSummary={ratingSummary} />
       </Stack>

@@ -105,8 +105,8 @@ const HeroSection = ({
               data={convertMinsToHrsMins(length_in_minutes)}
               size="md"
             />
-            <Badge icon={BsClock} data={price} size="md" />
-            <Badge icon={BsClock} data="TAG" size="md" />
+            {/* <Badge icon={BsClock} data={price} size="md" />
+            <Badge icon={BsClock} data="TAG" size="md" /> */}
           </Flex>
         </Stack>
 

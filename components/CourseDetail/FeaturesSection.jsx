@@ -1,6 +1,6 @@
-import React from 'react'
-import { chakra, Box, List, ListItem, ListIcon } from '@chakra-ui/react'
-import { AiFillCheckCircle } from 'react-icons/ai'
+import React from "react";
+import { chakra, Box, List, ListItem, ListIcon } from "@chakra-ui/react";
+import { AiFillCheckCircle } from "react-icons/ai";
 
 const FeaturesSection = ({ features }) => {
   return (
@@ -13,13 +13,13 @@ const FeaturesSection = ({ features }) => {
           return (
             <ListItem key={index}>
               <ListIcon as={AiFillCheckCircle} color="green.500" />
-              {item}
+              {item.desc}
             </ListItem>
-          )
+          );
         })}
       </List>
     </Box>
-  )
-}
+  );
+};
 
-export default FeaturesSection
+export default FeaturesSection;

@@ -100,7 +100,7 @@ const LessonsSection = ({ lessons }) => {
                         color="teal"
                       />
                       <chakra.h2 fontSize="lg" fontWeight="500">
-                        {index + 1}) {content.title}
+                        {index + 1}) {content.lesson_desc}
                       </chakra.h2>
                     </HStack>
                     <HStack mt={{ base: 2, sm: 0 }} spacing="1">

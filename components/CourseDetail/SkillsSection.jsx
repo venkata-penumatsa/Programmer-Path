@@ -10,7 +10,7 @@ const SkillsSection = ({ skills }) => {
       </chakra.h1>
       <Flex direction="row" mt={2} flexWrap="wrap">
         {skills.map((skill, index) => (
-          <Badge data={skill} size="md" key={index} />
+          <Badge data={skill.desc} size="md" key={index} />
         ))}
       </Flex>
     </Box>

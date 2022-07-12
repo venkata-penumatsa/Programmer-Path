@@ -101,8 +101,18 @@ export async function getStaticProps({ params }) {
           desc
           image
         }
+        ps_what_you_will_learnList {
+          id
+          sort_id
+          desc
+        }
+        ps_skills_you_will_gainList {
+          id
+          sort_id
+          desc
+        }
       }
-    }    
+    }       
      `,
     variables: {
       slug: params.slug,
