@@ -29,6 +29,8 @@ export default withAuth(async (req, res) => {
                 total_lessons
                 ps_lessonsListUsingCategory2 {
                   id
+                  sort_id
+                  lesson_desc
                   video_url_main
                   video_length_in_minutes
                   

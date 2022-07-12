@@ -80,19 +80,21 @@ const LessonsSection = ({ lessons, setCurrent_Video }) => {
                   >
                     <HStack
                       bg={
-                        selectedId === content.id ? "teal.400" : "transparent"
+                        selectedId === content.sort_id
+                          ? "teal.400"
+                          : "transparent"
                       }
                       w="90%"
                       p={3}
                       cursor="pointer"
                       onClick={() => {
-                        setSelectedId(content.id);
+                        setSelectedId(content.sort_id);
                         setCurrent_Video(content.video_url_main);
                       }}
                     >
                       <chakra.h2 fontSize="md" fontWeight="500">
                         {/* {index + 1}) {content.title} */}
-                        Hi
+                        {content.sort_id} {content.lesson_desc}
                       </chakra.h2>
                     </HStack>
                     {/* <Checkbox colorScheme="teal" /> */}

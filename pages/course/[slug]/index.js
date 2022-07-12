@@ -60,8 +60,7 @@ export async function getStaticProps({ params }) {
 
   const graphqlQuery = {
     operationName: "get_single_lesson",
-    query: `
-    query get_single_lesson($slug: String = "") {
+    query: `query get_single_lesson($slug: String = "") {
       getPs_course(slug: $slug) {
         slug
         price
@@ -87,6 +86,9 @@ export async function getStaticProps({ params }) {
           total_lessons
           category
           ps_lessonsListUsingCat_id {
+            id
+            sort_id
+            lesson_desc
             video_length_in_minutes
             video_url_main
             video_url_preview
