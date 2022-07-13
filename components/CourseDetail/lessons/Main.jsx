@@ -46,7 +46,7 @@ const Main = () => {
             total_lessons={10}
           />
           <VideoSection data={data.data.ps_course_categoryList} />
-          <TabsSection />
+          <TabsSection overview={data.data.overview} />
         </Box>
       </>
     </Container>

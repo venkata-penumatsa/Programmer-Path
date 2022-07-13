@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   chakra,
   Box,
@@ -14,14 +14,19 @@ import {
   AccordionIcon,
   AccordionPanel,
   useColorModeValue,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { BsFillPlayCircleFill } from "react-icons/bs";
 import VerticalDivider from "../Util/VerticalDivider";
 import NextLink from "next/link";
 import { convertMinsToHrsMins } from "../Util/Common";
+import PreviewModelComponent from "../Body/PreviewModelComponent";
 
 const LessonsSection = ({ lessons }) => {
   console.log("lessons", lessons);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const [video, setVideo] = useState();
   return (
     <Box>
       <chakra.h1 fontSize="3xl" fontWeight="bold" mb={4}>
@@ -104,20 +109,10 @@ const LessonsSection = ({ lessons }) => {
                       </chakra.h2>
                     </HStack>
                     <HStack mt={{ base: 2, sm: 0 }} spacing="1">
-                      <Button colorScheme="teal" size="xs">
-                        <NextLink
-                          href={{
-                            pathname: "/course/[slug]/lessons",
-                            query: {
-                              slug: "react_js",
-                            },
-                          }}
-                          passHref
-                        >
-                          Preview
-                        </NextLink>
-                      </Button>
-                      <VerticalDivider height="15px" />
+                      {/* <Button colorScheme="teal" size="xs">
+                       Preview 
+                      </Button> */}
+                      {/* <VerticalDivider height="15px" /> */}
                       <Text>
                         {content.video_length_in_minutes} min
                         {/* {convertMinsToHrsMins(content.video_length_in_minutes)} */}
@@ -140,6 +135,14 @@ const LessonsSection = ({ lessons }) => {
           </AccordionItem>
         ))}
       </Accordion>
+      {isOpen && (
+        <PreviewModelComponent
+          isOpen={isOpen}
+          onOpen={onOpen}
+          onClose={onClose}
+          course_preview={course_preview}
+        />
+      )}
     </Box>
   );
 };

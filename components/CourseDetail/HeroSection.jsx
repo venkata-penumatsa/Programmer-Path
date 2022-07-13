@@ -36,6 +36,7 @@ import PreviewModelComponent from "../Body/PreviewModelComponent";
 
 const HeroSection = ({
   slug,
+  course_preview,
   short_desc,
   long_desc,
   trainer_name,
@@ -185,6 +186,7 @@ const HeroSection = ({
           isOpen={isOpen}
           onOpen={onOpen}
           onClose={onClose}
+          course_preview={course_preview}
         />
       )}
     </Fragment>

@@ -25,6 +25,7 @@ const Main = ({ data }) => {
 
   const {
     slug,
+    course_preview,
     short_desc,
     long_desc,
     overview,
@@ -64,13 +65,17 @@ const Main = ({ data }) => {
         is_free={is_free}
         number_of_enrollments={number_of_enrollments}
         img_url={img_url}
+        course_preview={course_preview}
       />
       <Stack spacing={10} maxW="3xl">
         <LessonsSection lessons={ps_course_categoryList} />
         <FeaturesSection features={ps_what_you_will_learnList} />
         <SkillsSection skills={ps_skills_you_will_gainList} />
         <OverviewSection description={overview} />
-        <TrainerProfile />
+        <TrainerProfile
+          trainer_name={trainer_name}
+          trainer_avatar={trainer_avatar}
+        />
         <ReviewsSection reviewData={reviewData} ratingSummary={ratingSummary} />
       </Stack>
     </Box>

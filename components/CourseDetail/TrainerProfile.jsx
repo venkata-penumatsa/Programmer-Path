@@ -10,59 +10,59 @@ import {
   Heading,
   IconButton,
   useColorModeValue,
-} from '@chakra-ui/react'
-import { FaGithub, FaFacebook, FaLinkedin, FaTwitter } from 'react-icons/fa'
-import { SiMessenger } from 'react-icons/si'
+} from "@chakra-ui/react";
+import { FaGithub, FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { SiMessenger } from "react-icons/si";
 
 const userProfile = {
-  name: 'Venkata Penumatsa',
-  username: '@venkata',
+  name: "Venkata Penumatsa",
+  username: "@venkata",
   desciption:
-    'Actress, musician, songwriter and artist. PM for work inquires or Actress, musician, songwriter and artist. PM for work inquires or',
+    "Actress, musician, songwriter and artist. PM for work inquires or Actress, musician, songwriter and artist. PM for work inquires or",
   accounts: [
     {
-      url: '#',
-      label: 'Github Account',
-      type: 'gray',
+      url: "#",
+      label: "Github Account",
+      type: "gray",
       icon: <FaGithub />,
     },
     {
-      url: '#',
-      label: 'Twitter Account',
-      type: 'twitter',
+      url: "#",
+      label: "Twitter Account",
+      type: "twitter",
       icon: <FaTwitter />,
     },
     {
-      url: '#',
-      label: 'Messenger Account',
-      type: 'messenger',
+      url: "#",
+      label: "Messenger Account",
+      type: "messenger",
       icon: <SiMessenger />,
     },
     {
-      url: '#',
-      label: 'LinkedIn Account',
-      type: 'linkedin',
+      url: "#",
+      label: "LinkedIn Account",
+      type: "linkedin",
       icon: <FaLinkedin />,
     },
     {
-      url: '#',
-      label: 'Facebook Account',
-      type: 'facebook',
+      url: "#",
+      label: "Facebook Account",
+      type: "facebook",
       icon: <FaFacebook />,
     },
   ],
-}
+};
 
-export default function TrainerProfile() {
+export default function TrainerProfile({ trainer_name, trainer_avatar }) {
   return (
     <Box>
       <chakra.h1 fontSize="3xl" fontWeight="bold" mb={4}>
         Trainer profile
       </chakra.h1>
       <Stack
-        direction={{ base: 'column', md: 'row' }}
+        direction={{ base: "column", md: "row" }}
         w="full"
-        bg={useColorModeValue('white', 'gray.900')}
+        bg={useColorModeValue("white", "gray.900")}
         boxShadow="lg"
         rounded="lg"
         p={{ base: 4, md: 6 }}
@@ -71,9 +71,7 @@ export default function TrainerProfile() {
         <Stack direction="column" alignItems="center" flex={1}>
           <Avatar
             size="xl"
-            src={
-              'https://images.unsplash.com/photo-1500048993953-d23a436266cf?ixlib=rb-1.2.1&w=200&h=200&q=80&fm=jpg&crop=entropy&cs=tinysrgb'
-            }
+            src={trainer_avatar}
             alt="Avatar Alt"
             mb={2}
             pos="relative"
@@ -81,25 +79,25 @@ export default function TrainerProfile() {
               content: '""',
               w: 4,
               h: 4,
-              bg: 'green.300',
-              border: '2px solid white',
-              rounded: 'full',
-              pos: 'absolute',
+              bg: "green.300",
+              border: "2px solid white",
+              rounded: "full",
+              pos: "absolute",
               bottom: 0,
               right: 3,
             }}
           />
           <Heading fontSize="2xl" fontFamily="body">
-            {userProfile.name}
+            {trainer_name}
           </Heading>
-          <Text fontWeight={600} color="gray.500" mb={4}>
+          {/* <Text fontWeight={600} color="gray.500" mb={4}>
             {userProfile.username}
-          </Text>
+          </Text> */}
         </Stack>
         <Stack direction="column" flex={2} justifyContent="center" spacing={3}>
           <Text
             textAlign="center"
-            color={useColorModeValue('gray.700', 'gray.400')}
+            color={useColorModeValue("gray.700", "gray.400")}
             px={3}
             noOfLines={4}
           >
@@ -111,7 +109,7 @@ export default function TrainerProfile() {
               px={2}
               py={1}
               m={1}
-              bg={useColorModeValue('gray.100', 'gray.800')}
+              bg={useColorModeValue("gray.100", "gray.800")}
               fontWeight="400"
             >
               #art
@@ -120,7 +118,7 @@ export default function TrainerProfile() {
               px={2}
               py={1}
               m={1}
-              bg={useColorModeValue('gray.100', 'gray.800')}
+              bg={useColorModeValue("gray.100", "gray.800")}
               fontWeight="400"
             >
               #photography
@@ -129,7 +127,7 @@ export default function TrainerProfile() {
               px={2}
               py={1}
               m={1}
-              bg={useColorModeValue('gray.100', 'gray.800')}
+              bg={useColorModeValue("gray.100", "gray.800")}
               fontWeight="400"
             >
               #music
@@ -152,5 +150,5 @@ export default function TrainerProfile() {
         </Stack>
       </Stack>
     </Box>
-  )
+  );
 }

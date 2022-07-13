@@ -64,6 +64,7 @@ export async function getStaticProps({ params }) {
     query get_single_lesson($slug: String = "") {
       getPs_course(slug: $slug) {
         slug
+        course_preview
         price
         length_in_minutes
         language

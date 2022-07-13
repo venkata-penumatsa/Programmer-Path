@@ -16,7 +16,13 @@ import {
 } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 
-const PreviewModelComponent = ({ isOpen, onOpen, onClose, slug }) => {
+const PreviewModelComponent = ({
+  isOpen,
+  onOpen,
+  onClose,
+  slug,
+  course_preview,
+}) => {
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
 
@@ -44,7 +50,7 @@ const PreviewModelComponent = ({ isOpen, onOpen, onClose, slug }) => {
             <ModalBody>
               <AspectRatio maxHeight={315} maxWidth={560}>
                 <ReactPlayer
-                  url="https://www.youtube.com/embed/QhBnZ6NPOY0"
+                  url={course_preview}
                   width="100%"
                   height="100%"
                   controls={true}

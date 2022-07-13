@@ -15,24 +15,22 @@ import {
   AiOutlineInfoCircle,
   AiOutlineDollarCircle,
 } from "react-icons/ai";
+import TrainerProfile from "../TrainerProfile";
 
-const tabsList = [
-  { heading: "Q&A", data: "Q&A Data", icon: AiOutlineQuestionCircle },
-  {
-    heading: "Review & Ratings",
-    data: "Review & Ratings Data",
-    icon: AiOutlineStar,
-  },
-  { heading: "Overview", data: "Overview Data", icon: AiOutlineUnorderedList },
-  {
-    heading: "About Trainer",
-    data: "About Trainer Data",
-    icon: AiOutlineInfoCircle,
-  },
-  { heading: "Donate", data: "Donate Data", icon: AiOutlineDollarCircle },
-];
+const TabsSection = ({ overview }) => {
+  const tabsList = [
+    {
+      heading: "Overview",
+      data: overview,
+      icon: AiOutlineUnorderedList,
+    },
+    {
+      heading: "About Trainer",
+      data: "About Trainer Data",
+      icon: AiOutlineInfoCircle,
+    },
+  ];
 
-const TabsSection = () => {
   return (
     <Tabs>
       <TabList overflowY={{ base: "scroll", md: "inherit" }}>

@@ -23,6 +23,7 @@ export default withAuth(async (req, res) => {
             getPs_course(slug: $slug) {
                 slug
                 trainer_name
+                overview
               ps_course_categoryList {
                 sort_id
                 category
