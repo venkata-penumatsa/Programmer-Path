@@ -3,6 +3,7 @@ import useSWR from "swr";
 //Components
 import CircularLoading from "../Util/CircularLoading";
 import MyEnrollmentComponentData from "./MyEnrollmentComponentData";
+import { NextSeo } from "next-seo";
 
 const fetcher = async (...args) => {
   const response = await fetch(...args, {
@@ -23,6 +24,10 @@ const MyEnrollmentComponent = () => {
 
   return (
     <div>
+      <NextSeo
+        title="My Enrollments | Programmer Path"
+        description="Programmer Path is a learning management system (LMS) that will provide technical courses."
+      />
       <MyEnrollmentComponentData data={data.data} />
     </div>
   );
