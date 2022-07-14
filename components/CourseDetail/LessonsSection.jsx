@@ -23,7 +23,7 @@ import { convertMinsToHrsMins } from "../Util/Common";
 import PreviewModelComponent from "../Body/PreviewModelComponent";
 
 const LessonsSection = ({ lessons }) => {
-  console.log("lessons", lessons);
+  // console.log("lessons", lessons);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [video, setVideo] = useState();

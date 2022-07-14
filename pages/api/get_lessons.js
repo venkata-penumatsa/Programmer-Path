@@ -1,15 +1,13 @@
 import { withAuth } from "@clerk/nextjs/api";
 
 export default withAuth(async (req, res) => {
-  console.log("hellow world");
   if (req.method === "POST") {
     const { userId, sessionId } = req.auth;
     const slug = req.body.slug;
-    console.log("sluggg", slug);
+
     if (!userId || !sessionId || !slug) {
       return res.status(500).json({ error: "user not logged in, try again" });
     } else {
-      console.log("hellow world2");
       const endpoint = process.env.STEPZEN_END_POINT;
 
       const headers = {
@@ -23,6 +21,7 @@ export default withAuth(async (req, res) => {
             getPs_course(slug: $slug) {
                 slug
                 trainer_name
+                trainer_profile
                 overview
               ps_course_categoryList {
                 sort_id
@@ -52,7 +51,7 @@ export default withAuth(async (req, res) => {
       const response = await fetch(endpoint, options);
       const data = await response.json();
 
-      console.log("server data", data.data.getPs_course); // data
+      // console.log("server data", data.data.getPs_course); // data
       //   console.log("errors", data.errors); //
 
       if (data.data) {

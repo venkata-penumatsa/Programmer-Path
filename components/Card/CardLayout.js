@@ -4,7 +4,7 @@ import CourseCard from "./CourseCard";
 import CourseGrid from "./CourseGrid";
 
 const CardLayout = ({ data }) => {
-  console.log("card log2", data);
+  // console.log("card log2", data);
   return (
     <div>
       <CourseGrid>

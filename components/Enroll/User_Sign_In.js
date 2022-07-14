@@ -56,9 +56,9 @@ const User_Sign_In = ({ is_free, slug }) => {
       }),
     });
 
-    if (!response.ok) {
-      console.log("error");
-    }
+    // if (!response.ok) {
+    //   console.log("error");
+    // }
 
     if (response.ok) {
       const data = await response.json();

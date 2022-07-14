@@ -47,12 +47,12 @@ export async function getStaticProps() {
   };
 
   const response = await fetch(endpoint, options);
-  console.log("Response", response); // data
+  // console.log("Response", response); // data
   const data = await response.json();
-  console.log("data2", data); // data
+  // console.log("data2", data); // data
   const data2 = data.data;
 
-  console.log("Index", data2); // data
+  // console.log("Index", data2); // data
   // console.log(data2.errors); //error
 
   return {

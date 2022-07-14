@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 
 const MyEnrollmentComponentData = ({ data }) => {
-  console.log("data", data);
+  // console.log("data", data);
   return (
     <div>
       <br />

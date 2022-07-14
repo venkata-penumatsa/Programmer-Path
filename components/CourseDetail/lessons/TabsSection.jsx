@@ -17,7 +17,7 @@ import {
 } from "react-icons/ai";
 import TrainerProfile from "../TrainerProfile";
 
-const TabsSection = ({ overview }) => {
+const TabsSection = ({ overview, trainer_profile }) => {
   const tabsList = [
     {
       heading: "Overview",
@@ -26,7 +26,7 @@ const TabsSection = ({ overview }) => {
     },
     {
       heading: "About Trainer",
-      data: "About Trainer Data",
+      data: trainer_profile,
       icon: AiOutlineInfoCircle,
     },
   ];

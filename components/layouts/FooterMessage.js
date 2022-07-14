@@ -29,7 +29,7 @@ const fetcher = async (...args) => {
 };
 
 const FooterMessage = () => {
-  console.log("footer message");
+  // console.log("footer message");
 
   const { data, error } = useSWR("/api/get_motivational_message", fetcher);
 

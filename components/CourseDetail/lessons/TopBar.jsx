@@ -10,7 +10,7 @@ import {
 import { BsClock } from "react-icons/bs";
 
 const TopBar = ({ slug, trainer_name, total_sections, total_lessons }) => {
-  console.log("props received", slug, trainer_name);
+  // console.log("props received", slug, trainer_name);
 
   const data = [
     { text: slug, icon: FaReact },

@@ -41,7 +41,7 @@ export async function getStaticPaths() {
   const data = await response.json();
   const data2 = data.data.getPs_courseList;
 
-  console.log("Get Static Paths", data2);
+  // console.log("Get Static Paths", data2);
 
   const paths = data2.map((post) => ({
     params: { slug: post.slug },
@@ -130,7 +130,7 @@ export async function getStaticProps({ params }) {
   const data = await response.json();
   const data2 = data.data;
 
-  console.log("Get Serverside Props", data2);
+  // console.log("Get Serverside Props", data2);
 
   return {
     props: { data2 },

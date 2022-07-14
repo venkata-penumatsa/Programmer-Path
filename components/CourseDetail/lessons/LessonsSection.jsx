@@ -20,7 +20,7 @@ import { FaRegHandPointRight } from "react-icons/fa";
 import { TiTickOutline } from "react-icons/ti";
 
 const LessonsSection = ({ lessons, setCurrent_Video }) => {
-  console.log("lessons-", lessons);
+  // console.log("lessons-", lessons);
 
   const [selectedId, setSelectedId] = useState(0);
 

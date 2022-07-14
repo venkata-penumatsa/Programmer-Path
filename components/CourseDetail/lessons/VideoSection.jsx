@@ -23,7 +23,7 @@ const VideoSection = ({ data }) => {
     };
   }, []);
 
-  console.log("state CurrentVideo", current_video);
+  // console.log("state CurrentVideo", current_video);
 
   return (
     <Flex direction={{ base: "column", lg: "row" }} mb={{ base: 5, md: 1 }}>

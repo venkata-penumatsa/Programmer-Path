@@ -1,13 +1,11 @@
 import { withAuth } from "@clerk/nextjs/api";
 
 export default withAuth(async (req, res) => {
-  console.log("hellow world");
   if (req.method === "POST") {
     const { userId, sessionId } = req.auth;
     if (!userId || !sessionId) {
       return res.status(500).json({ error: "user not logged in, try again" });
     } else {
-      console.log("hellow world2");
       const endpoint = process.env.STEPZEN_END_POINT;
 
       const headers = {
@@ -37,7 +35,7 @@ export default withAuth(async (req, res) => {
       const response = await fetch(endpoint, options);
       const data = await response.json();
 
-      console.log("server data", data.data); // data
+      // console.log("server data", data.data); // data
       //   console.log("errors", data.errors); //
 
       if (data.data) {

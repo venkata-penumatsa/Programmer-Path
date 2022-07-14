@@ -65,7 +65,7 @@ export default withAuth(async (req, res) => {
       const response = await fetch(endpoint, options);
       const data = await response.json();
 
-      console.log("server data", data.data);
+      // console.log("server data", data.data);
 
       if (data.data) {
         res.status(200).json({ data: data.data.getPs_course });

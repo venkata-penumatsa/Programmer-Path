@@ -21,7 +21,7 @@ import TrainerProfile from "./TrainerProfile";
 import { NextSeo } from "next-seo";
 
 const Main = ({ data }) => {
-  console.log("single page data", data);
+  // console.log("single page data", data);
 
   const {
     slug,
@@ -49,7 +49,7 @@ const Main = ({ data }) => {
   return (
     <Box>
       <NextSeo title={ps_seoList[0].title} description={ps_seoList[0].desc} />
-      <BreadcrumbSection />
+      <BreadcrumbSection slug={slug} />
       <HeroSection
         slug={slug}
         short_desc={short_desc}
@@ -82,7 +82,7 @@ const Main = ({ data }) => {
   );
 };
 
-const BreadcrumbSection = () => {
+const BreadcrumbSection = ({ slug }) => {
   return (
     <HStack alignItems="center">
       <NextLink
@@ -94,7 +94,7 @@ const BreadcrumbSection = () => {
         <Link>Home</Link>
       </NextLink>
       <Icon as={BiChevronRight} mt="2px !important" />
-      <Text>react_js</Text>
+      <Text>{slug}</Text>
     </HStack>
   );
 };

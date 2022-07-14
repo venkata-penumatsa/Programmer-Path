@@ -20,9 +20,6 @@ const MyEnrollmentComponent = () => {
 
   if (error) return "Error...";
   if (!data) return <CircularLoading />;
-  if (data) {
-    console.log("enrollmentData", data);
-  }
 
   return (
     <div>

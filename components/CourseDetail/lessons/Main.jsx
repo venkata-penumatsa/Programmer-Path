@@ -8,7 +8,7 @@ import useSWR from "swr";
 import { useRouter } from "next/router";
 
 const fetcher = async (url, slug) => {
-  console.log(url, slug);
+  // console.log(url, slug);
   const response = await fetch(url, {
     method: "POST",
     headers: {
@@ -25,14 +25,14 @@ const fetcher = async (url, slug) => {
 
 const Main = () => {
   const router = useRouter();
-  console.log("router is", router.query.slug);
+  // console.log("router is", router.query.slug);
 
   const url = "/api/get_lessons";
   const slug = router.query.slug;
 
   const { data, error } = useSWR([url, slug], fetcher);
 
-  if (error) return `"Error is" ${error.message}"`;
+  if (error) return `"Error is" ${error.message} "please refresh the browser"`;
   if (!data) return "Loading...";
 
   return (
@@ -46,7 +46,10 @@ const Main = () => {
             total_lessons={10}
           />
           <VideoSection data={data.data.ps_course_categoryList} />
-          <TabsSection overview={data.data.overview} />
+          <TabsSection
+            overview={data.data.overview}
+            trainer_profile={data.data.trainer_profile}
+          />
         </Box>
       </>
     </Container>
